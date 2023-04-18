@@ -20,7 +20,7 @@ public class MoneyExchangeController {
                             RedirectAttributes redirect) {
         double usdDouble = Double.parseDouble(usd);
         double vnd = 23.447 * usdDouble;
-        model.addAttribute("vnd",vnd);
+        model.addAttribute("vnd", vnd);
 //        redirect.addFlashAttribute("vnd", vnd);
         return "result";
     }
