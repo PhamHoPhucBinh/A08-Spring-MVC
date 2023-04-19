@@ -1,4 +1,4 @@
-package com.example.dictionary;
+package com.example.dictionary.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,7 +14,7 @@ import java.util.Scanner;
 public class DictionaryController {
     @GetMapping("home")
     private String show() {
-        return "dictionary";
+        return "formInput";
     }
 
     @PostMapping("/result")
@@ -37,6 +37,6 @@ public class DictionaryController {
             System.out.println("Từ \"" + inputEnglish + "\" không tồn tại trong từ điển");
         }
         redirect.addFlashAttribute("output", output);
-        return "result";
+        return "output";
     }
 }
