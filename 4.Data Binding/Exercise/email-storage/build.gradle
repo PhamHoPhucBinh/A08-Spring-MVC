@@ -3,7 +3,7 @@ plugins {
     id 'war'
 }
 
-group 'com.example'
+group 'com'
 version '1.0-SNAPSHOT'
 
 repositories {
@@ -27,7 +27,6 @@ dependencies {
     implementation group: 'org.springframework', name: 'spring-web', version: '5.2.22.RELEASE'
     implementation group: 'org.springframework', name: 'spring-webmvc', version: '5.2.22.RELEASE'
     implementation group: 'javax.servlet', name: 'jstl', version: '1.2'
-
 }
 
 test {
