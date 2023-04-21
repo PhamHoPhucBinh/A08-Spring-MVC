@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<img id="img-of-the-day">
+<script>
+  let query = 'https://api.nasa.gov/planetary/apod?api_key= rIRyGCC5PIZNuao2KTyPevcOuPtmkwwQOcpNh4AZ';
+  let request = new XMLHttpRequest();
+  request.open('GET', query);
+  request.onload = function() {
+    if (request.status === 200) {
+      let response = JSON.parse(request.responseText);
+      document.getElementById('img-of-the-day').setAttribute('src', response.url);
+    }
+  };
+  request.send();
+</script>
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>NASA Image of the Day</title>
+</head>
+<body>
+<img id="img-of-the-day">
+<div>
+  <h3>Rate this image:</h3>
+  <div>
+    <button onclick="vote(1)">1</button>
+    <button onclick="vote(2)">2</button>
+    <button onclick="vote(3)">3</button>
+    <button onclick="vote(4)">4</button>
+    <button onclick="vote(5)">5</button>
+  </div>
+</div>
+<div>
+  <h3>Leave a comment:</h3>
+  <input id="comment-input" type="text">
+  <button onclick="submitComment()">Submit</button>
+</div>
+<div id="comments-container"></div>
+<script>
+  function vote(rating) {
+    // TODO: Send rating to server
+  }
+
+  function submitComment() {
+    let comment = document.getElementById('comment-input').value;
+    // TODO: Send comment to server
+    document.getElementById('comment-input').value = '';
+  }
+
+  function likeComment(commentId) {
+    // TODO: Send like to server
+  }
+
+  let query = 'https://api.nasa.gov/planetary/apod?api_key=rIRyGCC5PIZNuao2KTyPevcOuPtmkwwQOcpNh4AZ';
+  let request = new XMLHttpRequest();
+  request.open('GET', query);
+  request.onload = function() {
+    if (request.status === 200) {
+      let response = JSON.parse(request.responseText);
+      document.getElementById('img-of-the-day').setAttribute('src', response.url);
+    }
+  };
+  request.send();
+
+  // TODO: Fetch comments from server and display them in #comments-container
+</script>
+</body>
+</html>

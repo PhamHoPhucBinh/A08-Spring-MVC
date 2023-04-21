@@ -1,5 +1,7 @@
 package codegym.model;
 
+import org.hibernate.annotations.Generated;
+
 import javax.persistence.*;
 
 @Entity

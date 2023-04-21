@@ -5,19 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f3335faa-4372-4710-ae05-a91faafcb821" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/codegym/configuration/AppConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/codegym/configuration/AppInit.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/codegym/configuration/WebAppInitializer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/codegym/controller/SongController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/codegym/model/Song.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/codegym/repository/SongRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/codegym/service/SongService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/hibernate.conf.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/form.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/list.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/codegym/model/Song.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/codegym/model/Song.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -91,7 +80,8 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
     "last_opened_file_path": "D:/CodegymA06/A08-Spring MVC/5.ORM & Database/pratice/customer-management",
-    "nodejs_package_manager_path": "npm"
+    "nodejs_package_manager_path": "npm",
+    "spring.configuration.checksum": "97cf61535c5acda9800f722dec296e76"
   }
 }]]></component>
   <component name="RunManager">
@@ -178,6 +168,7 @@
       <updated>1682063549446</updated>
       <workItem from="1682063550760" duration="943000" />
       <workItem from="1682073970025" duration="8438000" />
+      <workItem from="1682082689802" duration="1550000" />
     </task>
     <servers />
   </component>
