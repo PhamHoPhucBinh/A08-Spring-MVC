@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <link rel="stylesheet" href="/webjars/bootstrap/5.2.2/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container">
+  <form action="/save" method="post" th:object="${song}">
+    <input type="hidden" th:field="*{id}">
+    <div class="mb-3">
+      <label class="form-label">Name</label>
+      <input name="name" type="text" class="form-control" th:field="*{name}">
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Kind</label>
+      <input name="kind" type="text" class="form-control" th:field="*{kind}">
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Artist</label>
+      <input name="artist" type="text" class="form-control" th:field="*{artist}">
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Upload</label>
+      <input name="link" type="text" class="form-control">
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+</div>
+</body>
+</html>
