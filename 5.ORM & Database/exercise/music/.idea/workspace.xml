@@ -5,8 +5,37 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f3335faa-4372-4710-ae05-a91faafcb821" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/../../../4.Data Binding/Exercise/health-declaration/build.gradle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../4.Data Binding/Exercise/health-declaration/gradle/wrapper/gradle-wrapper.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../4.Data Binding/Exercise/health-declaration/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../4.Data Binding/Exercise/health-declaration/gradlew" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../4.Data Binding/Exercise/health-declaration/gradlew.bat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../4.Data Binding/Exercise/health-declaration/settings.gradle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../4.Data Binding/Exercise/health-declaration/src/main/java/com/healthdeclaration/HealthDeclarationApplication.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../4.Data Binding/Exercise/health-declaration/src/main/java/com/healthdeclaration/controller/HeathDeclarationController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../4.Data Binding/Exercise/health-declaration/src/main/java/com/healthdeclaration/model/HealthDeclaration.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../4.Data Binding/Exercise/health-declaration/src/main/resources/application.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../4.Data Binding/Exercise/health-declaration/src/test/java/com/healthdeclaration/HealthDeclarationApplicationTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../4.Data Binding/Exercise/health-declaration/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/../../../4.Data Binding/Exercise/health-declaration/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../4.Data Binding/Exercise/health-declaration/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../4.Data Binding/Exercise/health-declaration/.idea/artifacts/health_declaration_war.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../4.Data Binding/Exercise/health-declaration/.idea/artifacts/health_declaration_war_exploded.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../4.Data Binding/Exercise/health-declaration/.idea/encodings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../4.Data Binding/Exercise/health-declaration/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../4.Data Binding/Exercise/health-declaration/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../4.Data Binding/Exercise/health-declaration/.mvn/wrapper/maven-wrapper.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../4.Data Binding/Exercise/health-declaration/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../4.Data Binding/Exercise/health-declaration/mvnw" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../4.Data Binding/Exercise/health-declaration/mvnw.cmd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../4.Data Binding/Exercise/health-declaration/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../4.Data Binding/Exercise/health-declaration/src/main/java/com/example/healthdeclaration/HelloServlet.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../4.Data Binding/Exercise/health-declaration/src/main/webapp/WEB-INF/web.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../4.Data Binding/Exercise/health-declaration/src/main/webapp/index.jsp" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/codegym/model/Song.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/codegym/model/Song.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../picture-of-day/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../picture-of-day/.idea/gradle.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../picture-of-day/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/../picture-of-day/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../picture-of-day/src/main/webapp/WEB-INF/web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../picture-of-day/src/main/webapp/WEB-INF/web.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../picture-of-day/src/main/webapp/index.jsp" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -79,7 +108,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "D:/CodegymA06/A08-Spring MVC/5.ORM & Database/pratice/customer-management",
+    "last_opened_file_path": "D:/CodegymA06/A08-Spring MVC/5.ORM & Database/exercise/music",
     "nodejs_package_manager_path": "npm",
     "spring.configuration.checksum": "97cf61535c5acda9800f722dec296e76"
   }
@@ -169,6 +198,7 @@
       <workItem from="1682063550760" duration="943000" />
       <workItem from="1682073970025" duration="8438000" />
       <workItem from="1682082689802" duration="1550000" />
+      <workItem from="1682341965392" duration="585000" />
     </task>
     <servers />
   </component>
