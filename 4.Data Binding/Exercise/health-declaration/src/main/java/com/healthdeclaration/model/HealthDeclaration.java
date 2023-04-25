@@ -81,4 +81,260 @@ public class HealthDeclaration {
         this.visit = visit;
         this.closeContact = closeContact;
     }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getFullName() {
+        return fullName;
+    }
+
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
+    }
+
+    public int getYearBirthday() {
+        return yearBirthday;
+    }
+
+    public void setYearBirthday(int yearBirthday) {
+        this.yearBirthday = yearBirthday;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+
+    public String getNationality() {
+        return nationality;
+    }
+
+    public void setNationality(String nationality) {
+        this.nationality = nationality;
+    }
+
+    public String getIdentification() {
+        return identification;
+    }
+
+    public void setIdentification(String identification) {
+        this.identification = identification;
+    }
+
+    public String getVehicle() {
+        return vehicle;
+    }
+
+    public void setVehicle(String vehicle) {
+        this.vehicle = vehicle;
+    }
+
+    public String getNumberPlate() {
+        return numberPlate;
+    }
+
+    public void setNumberPlate(String numberPlate) {
+        this.numberPlate = numberPlate;
+    }
+
+    public String getNumberSeat() {
+        return numberSeat;
+    }
+
+    public void setNumberSeat(String numberSeat) {
+        this.numberSeat = numberSeat;
+    }
+
+    public LocalDate getStartDate() {
+        return startDate;
+    }
+
+    public void setStartDate(LocalDate startDate) {
+        this.startDate = startDate;
+    }
+
+    public int getStartDay() {
+        return startDay;
+    }
+
+    public void setStartDay(int startDay) {
+        this.startDay = startDay;
+    }
+
+    public int getStartMonth() {
+        return startMonth;
+    }
+
+    public void setStartMonth(int startMonth) {
+        this.startMonth = startMonth;
+    }
+
+    public int getStartYear() {
+        return startYear;
+    }
+
+    public void setStartYear(int startYear) {
+        this.startYear = startYear;
+    }
+
+    public LocalDate getEndDate() {
+        return endDate;
+    }
+
+    public void setEndDate(LocalDate endDate) {
+        this.endDate = endDate;
+    }
+
+    public int getEndDay() {
+        return endDay;
+    }
+
+    public void setEndDay(int endDay) {
+        this.endDay = endDay;
+    }
+
+    public int getEndMonth() {
+        return endMonth;
+    }
+
+    public void setEndMonth(int endMonth) {
+        this.endMonth = endMonth;
+    }
+
+    public int getEndYear() {
+        return endYear;
+    }
+
+    public void setEndYear(int endYear) {
+        this.endYear = endYear;
+    }
+
+    public String getInfoWithin14days() {
+        return infoWithin14days;
+    }
+
+    public void setInfoWithin14days(String infoWithin14days) {
+        this.infoWithin14days = infoWithin14days;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public String getDistrict() {
+        return district;
+    }
+
+    public void setDistrict(String district) {
+        this.district = district;
+    }
+
+    public String getWard() {
+        return ward;
+    }
+
+    public void setWard(String ward) {
+        this.ward = ward;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public List<String> getSymptomsWithin14days() {
+        return symptomsWithin14days;
+    }
+
+    public void setSymptomsWithin14days(List<String> symptomsWithin14days) {
+        this.symptomsWithin14days = symptomsWithin14days;
+    }
+
+    public String getFever() {
+        return fever;
+    }
+
+    public void setFever(String fever) {
+        this.fever = fever;
+    }
+
+    public String getCough() {
+        return cough;
+    }
+
+    public void setCough(String cough) {
+        this.cough = cough;
+    }
+
+    public String getShortnessOfBreath() {
+        return shortnessOfBreath;
+    }
+
+    public void setShortnessOfBreath(String shortnessOfBreath) {
+        this.shortnessOfBreath = shortnessOfBreath;
+    }
+
+    public String getSoreThroat() {
+        return soreThroat;
+    }
+
+    public void setSoreThroat(String soreThroat) {
+        this.soreThroat = soreThroat;
+    }
+
+    public List<String> getHistoryExposuresWithin14days() {
+        return historyExposuresWithin14days;
+    }
+
+    public void setHistoryExposuresWithin14days(List<String> historyExposuresWithin14days) {
+        this.historyExposuresWithin14days = historyExposuresWithin14days;
+    }
+
+    public String getVisit() {
+        return visit;
+    }
+
+    public void setVisit(String visit) {
+        this.visit = visit;
+    }
+
+    public String getCloseContact() {
+        return closeContact;
+    }
+
+    public void setCloseContact(String closeContact) {
+        this.closeContact = closeContact;
+    }
 }
