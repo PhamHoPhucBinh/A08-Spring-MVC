@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>form-declaration</title>
+</head>
+<body>
+<h1>Khai Bao Y te</h1>
+<form action="@{/form}" method="post" th:object="${healthDeclaration}">
+    <div>
+        Full Name: <input th:field="*{fullName}">
+        <p th:if="${#fields.hasErrors('fullName')}" th:errors="*{fullName}"></p>
+    </div>
+    <div>
+        yearBirthday : <input th:field="*{yearBirthday}">
+        <p th:if="${#fields.hasErrors('yearBirthday')}" th:errors="*{yearBirthday}"></p>
+    </div>
+    <div>
+        gender : <input th:field="*{gender}">
+        <p th:if="${#fields.hasErrors('gender')}" th:errors="*{gender}"></p>
+    </div>
+    <div>
+        nationality : <input th:field="*{nationality}">
+        <p th:if="${#fields.hasErrors('nationality')}" th:errors="*{nationality}"></p>
+    </div>
+    <div>
+        identification : <input th:field="*{identification}">
+        <p th:if="${#fields.hasErrors('identification')}" th:errors="*{identification}"></p>
+    </div>
+    <div>
+        vehicle : <input th:field="*{vehicle}">
+        <p th:if="${#fields.hasErrors('vehicle')}" th:errors="*{vehicle}"></p>
+    </div>
+    <div>
+        numberPlate : <input th:field="*{numberPlate}">
+        <p th:if="${#fields.hasErrors('numberPlate')}" th:errors="*{numberPlate}"></p>
+    </div>
+    <div>
+        numberSeat : <input th:field="*{numberSeat}">
+        <p th:if="${#fields.hasErrors('numberSeat')}" th:errors="*{numberSeat}"></p>
+    </div>
+    <div>
+        startDay : <input th:field="*{startDay}">
+        <p th:if="${#fields.hasErrors('startDay')}" th:errors="*{startDay}"></p>
+    </div>
+    <div>
+        startMonth : <input th:field="*{startMonth}">
+        <p th:if="${#fields.hasErrors('startMonth')}" th:errors="*{startMonth}"></p>
+    </div>
+    <div>
+        startYear : <input th:field="*{startYear}">
+        <p th:if="${#fields.hasErrors('startYear')}" th:errors="*{startYear}"></p>
+    </div>
+    <div>
+        endDay : <input th:field="*{endDay}">
+        <p th:if="${#fields.hasErrors('endDay')}" th:errors="*{endDay}"></p>
+    </div>
+    <div>
+        endMonth : <input th:field="*{endMonth}">
+        <p th:if="${#fields.hasErrors('endMonth')}" th:errors="*{endMonth}"></p>
+    </div>
+    <div>
+        endYear : <input th:field="*{endYear}">
+        <p th:if="${#fields.hasErrors('endYear')}" th:errors="*{endYear}"></p>
+    </div>
+    <div>
+        infoWithin14days : <input th:field="*{infoWithin14days}">
+        <p th:if="${#fields.hasErrors('infoWithin14days')}" th:errors="*{infoWithin14days}"></p>
+    </div>
+    <div>
+        city : <input th:field="*{city}">
+        <p th:if="${#fields.hasErrors('city')}" th:errors="*{city}"></p>
+    </div>
+    <div>
+        district : <input th:field="*{district}">
+        <p th:if="${#fields.hasErrors('district')}" th:errors="*{district}"></p>
+    </div>
+    <div>
+        ward : <input th:field="*{ward}">
+        <p th:if="${#fields.hasErrors('ward')}" th:errors="*{ward}"></p>
+    </div>
+    <div>
+        address : <input th:field="*{address}">
+        <p th:if="${#fields.hasErrors('address')}" th:errors="*{address}"></p>
+    </div>
+    <div>
+        phone : <input th:field="*{phone}">
+        <p th:if="${#fields.hasErrors('phone')}" th:errors="*{phone}"></p>
+    </div>
+    <div>
+        email : <input th:field="*{email}">
+        <p th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></p>
+    </div>
+    <div>
+        symptomsWithin14days : <input th:field="*{symptomsWithin14days}">
+        <p th:if="${#fields.hasErrors('symptomsWithin14days')}" th:errors="*{symptomsWithin14days}"></p>
+    </div>
+    <div>
+        fever : <input th:field="*{fever}">
+        <p th:if="${#fields.hasErrors('fever')}" th:errors="*{fever}"></p>
+    </div>
+    <div>
+        cough : <input th:field="*{cough}">
+        <p th:if="${#fields.hasErrors('cough')}" th:errors="*{cough}"></p>
+    </div>
+    <div>
+        shortnessOfBreath : <input th:field="*{shortnessOfBreath}">
+        <p th:if="${#fields.hasErrors('shortnessOfBreath')}" th:errors="*{shortnessOfBreath}"></p>
+    </div>
+    <div>
+        soreThroat : <input th:field="*{soreThroat}">
+        <p th:if="${#fields.hasErrors('soreThroat')}" th:errors="*{soreThroat}"></p>
+    </div>
+    <div>
+        historyExposuresWithin14days : <input th:field="*{historyExposuresWithin14days}">
+        <p th:if="${#fields.hasErrors('historyExposuresWithin14days')}" th:errors="*{historyExposuresWithin14days}"></p>
+    </div>
+    <div>
+        visit : <input th:field="*{visit}">
+        <p th:if="${#fields.hasErrors('visit')}" th:errors="*{visit}"></p>
+    </div>
+    <div>
+        closeContact : <input th:field="*{closeContact}">
+        <p th:if="${#fields.hasErrors('closeContact')}" th:errors="*{closeContact}"></p>
+    </div>
+</form>
+</body>
+</html>
