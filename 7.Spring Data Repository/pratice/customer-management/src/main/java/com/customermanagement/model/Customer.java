@@ -6,16 +6,19 @@ import javax.persistence.*;
 @Table (name = "customers")
 public class Customer {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
     private String firstName;
     private String lastName;
 
+    @ManyToOne
+    @JoinColumn(name = "province_id")
+    private Province province;
+
     public Customer() {
     }
 
-    public Customer(Integer id, String firstName, String lastName) {
-        this.id = id;
+    public Customer( String firstName, String lastName) {
         this.firstName = firstName;
         this.lastName = lastName;
     }
@@ -42,5 +45,10 @@ public class Customer {
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
+    }
+
+    @Override
+    public String toString() {
+        return String.format("Customer[id=%d, firstName='%s', lastName='%s']", id, firstName, lastName);
     }
 }
