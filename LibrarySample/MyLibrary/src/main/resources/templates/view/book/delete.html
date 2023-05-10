@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Delete Book</title>
+</head>
+<body>
+<h1>Delete Book</h1>
+<h2>Are you sure?</h2>
+<p>
+  <a href="/books">Book list</a>
+</p>
+<form th:action="@{/delete-book}" th:object="${book}" method="post">
+  <input name="id" hidden="hidden" th:field="*{bookId}" th:value="${book.bookId}">
+  <table>
+    <tr>
+      <td>Book title:</td>
+      <td th:text="${book.title}"></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><input type="submit" value="Delete customer"></td>
+    </tr>
+  </table>
+</form>
+</body>
+</html>

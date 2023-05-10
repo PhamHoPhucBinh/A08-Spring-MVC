@@ -16,13 +16,28 @@ public class Book {
 
     @Column(name = "AUTHOR", nullable = false)
     private String author;
-
+    @Column(name = "REMAINING",nullable = false)
+    private boolean remaining;
     public Book() {
     }
 
     public Book(String title, String author) {
         this.title = title;
         this.author = author;
+    }
+
+    public Book(String title, String author, boolean remaining) {
+        this.title = title;
+        this.author = author;
+        this.remaining = remaining;
+    }
+
+    public boolean isRemaining() {
+        return remaining;
+    }
+
+    public void setRemaining(boolean remaining) {
+        this.remaining = remaining;
     }
 
     public String getTitle() {

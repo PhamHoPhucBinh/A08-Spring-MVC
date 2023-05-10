@@ -4,28 +4,37 @@
 <head>
     <meta charset="UTF-8">
     <title>List of Books</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 </head>
 <body>
-<h1>List of Books</h1>
-<table>
-    <thead>
-    <tr>
-        <th>Book Id</th>
-        <th>Book Title</th>
-        <th>Author</th>
-    </tr>
-    </thead>
-    <tbody th:object="${books}">
-    <tr th:each="book : ${books}">
-        <td th:text="${book.bookId}"></td>
-        <td th:text="${book.title}"></td>
-        <td th:text="${book.author}"></td>
-        <td><a th:href="@{/edit-book/__${book.bookId}__ }">Edit</a></td>
-        <!--        <td><a th:href="@{/delete-book/{bookId}(bookId=${book.bookId})}">Delete</a></td>-->
-        <td><a th:href="@{/delete-book/{bookId}(book=${book})}">Delete</a></td>
-    </tr>
+<div class="container">
+    <h1>List of Books</h1>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>Book Id</th>
+            <th>Book Title</th>
+            <th>Author</th>
+            <th>Book Status</th>
+            <th>Loan</th>
+        </tr>
+        </thead>
+        <tbody th:object="${books}">
+        <tr th:each="book : ${books}">
+            <td th:text="${book.bookId}"></td>
+            <td th:text="${book.title}"></td>
+            <td th:text="${book.author}"></td>
+            <td th:text="${book.remaining}"></td>
+<!--            <td>-->
+<!--                <input type="checkbox">-->
+<!--            </td>-->
+            <td><button class="btn btn-primary"><a th:href="@{/loanRecord/__${book.bookId}__}"></a>Borrow</button></td>
+            <td><a th:href="@{/edit-book/__${book.bookId}__ }">Edit</a></td>
+            <td><a th:href="@{/delete-book/__${book.bookId}__}">Delete</a></td>
+        </tr>
+        </tbody>
 
-    </tbody>
-</table>
+    </table>
+</div>
 </body>
 </html>

@@ -24,4 +24,56 @@ public class LoanRecord {
 
     @Column(name = "RETURN_DATE")
     private Date returnDate;
+
+    public LoanRecord(Book book, Student student, Date loanDate, Date returnDate) {
+        this.book = book;
+        this.student = student;
+        this.loanDate = loanDate;
+        this.returnDate = returnDate;
+    }
+
+    public LoanRecord() {
+
+    }
+
+
+    public Integer getLoanId() {
+        return loanId;
+    }
+
+    public void setLoanId(Integer loanId) {
+        this.loanId = loanId;
+    }
+
+    public Book getBook() {
+        return book;
+    }
+
+    public void setBook(Book book) {
+        this.book = book;
+    }
+
+    public Student getStudent() {
+        return student;
+    }
+
+    public void setStudent(Student student) {
+        this.student = student;
+    }
+
+    public Date getLoanDate() {
+        return loanDate;
+    }
+
+    public void setLoanDate(Date loanDate) {
+        this.loanDate = loanDate;
+    }
+
+    public Date getReturnDate() {
+        return returnDate;
+    }
+
+    public void setReturnDate(Date returnDate) {
+        this.returnDate = returnDate;
+    }
 }
