@@ -7,6 +7,4 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface ICustomerRepository  extends PagingAndSortingRepository<Customer,Integer> {
-
-
 }
