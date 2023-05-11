@@ -6,35 +6,45 @@
     <title>List of Books</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 </head>
-<body>
-<div class="container">
-    <h1>List of Books</h1>
-    <table class="table table-striped">
-        <thead>
-        <tr>
-            <th>Book Id</th>
-            <th>Book Title</th>
-            <th>Author</th>
-            <th>Book Status</th>
-            <th>Loan</th>
-        </tr>
-        </thead>
-        <tbody th:object="${books}">
-        <tr th:each="book : ${books}">
-            <td th:text="${book.bookId}"></td>
-            <td th:text="${book.title}"></td>
-            <td th:text="${book.author}"></td>
-            <td th:text="${book.remaining}"></td>
-<!--            <td>-->
-<!--                <input type="checkbox">-->
-<!--            </td>-->
-            <td><button class="btn btn-primary"><a th:href="@{/loanRecord/__${book.bookId}__}"></a>Borrow</button></td>
-            <td><a th:href="@{/edit-book/__${book.bookId}__ }">Edit</a></td>
-            <td><a th:href="@{/delete-book/__${book.bookId}__}">Delete</a></td>
-        </tr>
-        </tbody>
 
-    </table>
-</div>
+<body>
+<section>
+    <div class="container">
+        <h1>List of Books</h1>
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>Book Id</th>
+                <th>Book Title</th>
+                <th>Author</th>
+                <th>Book Status</th>
+                <th>Loan</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </tr>
+            </thead>
+            <tbody th:object="${books}">
+            <tr th:each="book : ${books}">
+                <td th:text="${book.bookId}"></td>
+                <td th:text="${book.title}"></td>
+                <td th:text="${book.author}"></td>
+                <td th:text="${book.remaining}"></td>
+                <td>
+                    <button class="btn btn-success"><a th:href="@{/loanRecord/__${book.bookId}__}">Borrow</a></button>
+                </td>
+                <td>
+                    <button class="btn btn-warning"><a th:href="@{/edit-book/__${book.bookId}__}">Edit</a></button>
+                </td>
+                <td>
+                    <button class="btn btn-danger"><a th:href="@{/delete-book/__${book.bookId}__}">Delete</a></button>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="container text-center">
+        <a class="btn btn-default" href="/home">Back to Home page</a>
+    </div>
+</section>
 </body>
 </html>

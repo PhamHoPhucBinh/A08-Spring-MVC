@@ -34,7 +34,8 @@ public class BookController {
         ModelAndView modelAndView = new ModelAndView("view/book/create");
         modelAndView.addObject("book", new Book());
         modelAndView.addObject("message", "create successfully");
-        return modelAndView;
+//        return modelAndView;
+        return new ModelAndView("redirect:/books");
     }
 
     @GetMapping("/books")
