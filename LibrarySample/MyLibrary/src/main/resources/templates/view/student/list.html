@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>List of Students</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+</head>
+
+<body>
+<section>
+    <div class="container">
+        <h1>List of Students</h1>
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>Student Id</th>
+                <th>Student Code</th>
+                <th>Student Name</th>
+                <th>Email</th>
+                <th>Phone Number</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </tr>
+            </thead>
+            <tbody th:object="${students}">
+            <tr th:each="student : ${students}">
+                <td th:text="${student.studentId}"></td>
+                <td th:text="${student.studentCode}"></td>
+                <td th:text="${student.fullName}"></td>
+                <td th:text="${student.email}"></td>
+                <td th:text="${student.phoneNumber}"></td>
+
+                <td>
+                    <button class="btn btn-warning"><a th:href="@{/edit-student/__${student.studentId}__}">Edit</a></button>
+                </td>
+                <td>
+                    <button class="btn btn-danger"><a th:href="@{/delete-student/__${student.studentId}__}">Delete</a></button>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="container text-center">
+        <a class="btn btn-default" href="/home">Back to Home page</a>
+    </div>
+</section>
+</body>
+</html>

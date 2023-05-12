@@ -2,15 +2,22 @@ package com.Mylibrary.Librarymanagement.Controller;
 
 import com.Mylibrary.Librarymanagement.Bean.Book;
 import com.Mylibrary.Librarymanagement.Bean.LoanRecord;
+import com.Mylibrary.Librarymanagement.Bean.Student;
 import com.Mylibrary.Librarymanagement.Exception.BookRemainingZeroException;
 import com.Mylibrary.Librarymanagement.Exception.NotFoundIdRentalBookException;
 import com.Mylibrary.Librarymanagement.Service.Book.IBookService;
 import com.Mylibrary.Librarymanagement.Service.LoanRecord.ILoanRecordService;
+import com.Mylibrary.Librarymanagement.Service.Student.IStudentService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.time.Instant;
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.util.Date;
 import java.util.Optional;
 
 @Controller
@@ -20,6 +27,9 @@ public class BookController {
     private IBookService bookService;
     @Autowired
     private ILoanRecordService loanRecordService;
+
+    @Autowired
+    private IStudentService studentService;
 
     @GetMapping("/Create-Book")
     public ModelAndView showCreateForm() {
@@ -88,45 +98,5 @@ public class BookController {
         return "redirect:books";
     }
 
-    @GetMapping(value = "/loanRecord/{bookId}")
-    public String loanRecord(@PathVariable Integer bookId) throws Exception {
-        Optional<Book> book = bookService.findById(bookId);
-        if (book.get().isRemaining() == true) {
-            throw new BookRemainingZeroException();
-        }
-        Book book1 = book.get();
-        LoanRecord loanRecord = new LoanRecord();
-        int idLoanRecord = (int) (Math.random() * 100000);
-        loanRecord.setLoanId(idLoanRecord);
-        loanRecord.setBook(book1);
-        loanRecordService.save(loanRecord);
-        book1.setRemaining(false);
-        bookService.save(book1);
-        return "redirect:/show";
-//        return "redirect:/home";
-    }
 
-    @GetMapping(value = "/giveBack")
-    public String giveBack(@RequestParam("idLoanRecord") Integer loanId) throws Exception {
-        LoanRecord loanRecord = loanRecordService.findById(loanId).get();
-        if (loanRecord == null) {
-            throw new NotFoundIdRentalBookException();
-        }
-        Book book = loanRecord.getBook();
-        loanRecordService.remove(loanId);
-        book.setRemaining(true);
-        bookService.save(book);
-        return "redirect:/show";
-//        return "redirect:/home";
-    }
-
-    @ExceptionHandler(BookRemainingZeroException.class)
-    public String showErrorPage() {
-        return "error";
-    }
-
-    @ExceptionHandler(NotFoundIdRentalBookException.class)
-    public String showErrorNotFoundPage() {
-        return "error";
-    }
 }

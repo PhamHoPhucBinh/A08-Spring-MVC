@@ -29,8 +29,16 @@
                 <td th:text="${book.title}"></td>
                 <td th:text="${book.author}"></td>
                 <td th:text="${book.remaining}"></td>
-                <td>
-                    <button class="btn btn-success"><a th:href="@{/loanRecord/__${book.bookId}__}">Borrow</a></button>
+
+
+                <td th:if="${book.remaining == false}">
+                    <form method="get" th:action="@{/loan-form/__${book.bookId}__}">
+                        <button type="submit" class="btn btn-success">Borrow</button>
+                    </form>
+                    <!--                    <button class="btn btn-success"><a th:href="@{/loanRecord/__${book.bookId}__}">Borrow</a></button>-->
+                </td>
+                <td th:if="${book.remaining == true}">
+                    <button class="btn btn-info"><a th:href="@{/view-book/__${book.bookId}__}">Info</a></button>
                 </td>
                 <td>
                     <button class="btn btn-warning"><a th:href="@{/edit-book/__${book.bookId}__}">Edit</a></button>
@@ -38,6 +46,7 @@
                 <td>
                     <button class="btn btn-danger"><a th:href="@{/delete-book/__${book.bookId}__}">Delete</a></button>
                 </td>
+
             </tr>
             </tbody>
         </table>

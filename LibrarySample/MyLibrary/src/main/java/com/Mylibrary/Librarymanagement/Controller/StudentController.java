@@ -33,14 +33,14 @@ public class StudentController {
         ModelAndView modelAndView = new ModelAndView("view/student/create");
         modelAndView.addObject("student", new Student());
         modelAndView.addObject("message", "create successfully");
-        return modelAndView;
+        return new ModelAndView("redirect:/students");
     }
 
     @GetMapping("/students")
     public ModelAndView listStudents() {
         Iterable<Student> students = studentService.findAll();
-        ModelAndView modelAndView = new ModelAndView("student/list");
-        modelAndView.addObject("student", students);
+        ModelAndView modelAndView = new ModelAndView("view/student/list");
+        modelAndView.addObject("students", students);
         return modelAndView;
     }
 
@@ -48,19 +48,19 @@ public class StudentController {
     public ModelAndView showEditForm(@PathVariable Integer studentId) {
         Optional<Student> student = studentService.findById(studentId);
         if (student.isPresent()) {
-            ModelAndView modelAndView = new ModelAndView("/student/edit");
+            ModelAndView modelAndView = new ModelAndView("view/student/edit");
             modelAndView.addObject("student", student.get());
             return modelAndView;
         } else {
             ModelAndView modelAndView = new ModelAndView("/error.404");
-            return modelAndView;
+            return new ModelAndView("redirect:/students");
         }
     }
 
     @PostMapping("/edit-student")
     public ModelAndView updateStudent(@ModelAttribute("student") Student student) {
         studentService.save(student);
-        ModelAndView modelAndView = new ModelAndView("/student/edit");
+        ModelAndView modelAndView = new ModelAndView("view/student/edit");
         modelAndView.addObject("student", student);
         modelAndView.addObject("message", "Student updated successfully");
         return modelAndView;
@@ -70,7 +70,7 @@ public class StudentController {
     public ModelAndView showDeleteForm(@PathVariable Integer studentId) {
         Optional<Student> student = studentService.findById(studentId);
         if (student.isPresent()) {
-            ModelAndView modelAndView = new ModelAndView("/student/delete");
+            ModelAndView modelAndView = new ModelAndView("view/student/delete");
             modelAndView.addObject("student", student.get());
             return modelAndView;
 
