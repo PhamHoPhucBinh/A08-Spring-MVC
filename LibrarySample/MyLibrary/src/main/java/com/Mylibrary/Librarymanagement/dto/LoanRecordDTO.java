@@ -9,6 +9,8 @@ public class LoanRecordDTO {
 
     Integer book;
 
+    Integer loanId;
+
     public LoanRecordDTO() {
     }
 
@@ -21,6 +23,21 @@ public class LoanRecordDTO {
         this.studentId = studentId;
         this.returnDate = returnDate;
         this.book = book;
+    }
+
+    public LoanRecordDTO(Integer studentId, String returnDate, Integer book, Integer loanId) {
+        this.studentId = studentId;
+        this.returnDate = returnDate;
+        this.book = book;
+        this.loanId = loanId;
+    }
+
+    public Integer getLoanId() {
+        return loanId;
+    }
+
+    public void setLoanId(Integer loanId) {
+        this.loanId = loanId;
     }
 
     public java.lang.Integer getStudentId() {
@@ -46,4 +63,6 @@ public class LoanRecordDTO {
     public void setReturnDate(String returnDate) {
         this.returnDate = returnDate;
     }
+
+
 }

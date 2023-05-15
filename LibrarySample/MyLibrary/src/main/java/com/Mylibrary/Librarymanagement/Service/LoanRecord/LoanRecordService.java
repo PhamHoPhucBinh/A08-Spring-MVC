@@ -24,6 +24,12 @@ public class LoanRecordService implements ILoanRecordService {
     }
 
     @Override
+    public Optional<LoanRecord> findByBookId(Integer bookId){
+        return loanRecordRepository.findLoanRecordByBook_BookId(bookId);
+    }
+
+
+    @Override
     public void save(LoanRecord loanRecord) {
         loanRecordRepository.save(loanRecord);
     }

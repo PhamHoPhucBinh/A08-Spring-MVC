@@ -69,11 +69,11 @@ public class LoanController {
     }
 
 
-    @GetMapping("/loan-details")
-    public ModelAndView loanDetails(@PathVariable Integer loanId) {
-        Optional<LoanRecord> loanRecords = loanRecordService.findById(loanId);
+    @GetMapping("/loan-details/{bookId}")
+    public ModelAndView loanDetails(@PathVariable Integer bookId) {
+        Optional<LoanRecord> loanRecords = loanRecordService.findByBookId(bookId);
         ModelAndView modelAndView = new ModelAndView("view/loan/loan-details");
-        modelAndView.addObject("loanRecords", loanRecords);
+        modelAndView.addObject("loanRecords", loanRecords.orElse(null));
         return modelAndView;
     }
 

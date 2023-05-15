@@ -13,17 +13,16 @@
             <tr>
                 <th>Student Name</th>
                 <th>Book Name</th>
-                <th>Borrow Date</th>
+                <th>Loan Date</th>
                 <th>Return Date</th>
             </tr>
             </thead>
             <tbody th:object="${loanRecords}">
             <tr th:each="loanRecord : ${loanRecords}">
-                <td th:text="${loanRecord.studentId}"></td>
-                <td th:text="${student.studentCode}"></td>
-                <td th:text="${student.fullName}"></td>
-                <td th:text="${student.email}"></td>
-                <td th:text="${student.phoneNumber}"></td>
+                <td th:text="${loanRecords.student.fullName}"></td>
+                <td th:text="${loanRecords.book.title}"></td>
+                <td th:text="${loanRecords.loanDate}"></td>
+                <td th:text="${loanRecords.returnDate}"></td>
             </tr>
             </tbody>
         </table>
