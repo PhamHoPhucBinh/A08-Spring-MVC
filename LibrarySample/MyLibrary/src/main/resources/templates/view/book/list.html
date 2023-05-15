@@ -38,7 +38,7 @@
                     <!--                    <button class="btn btn-success"><a th:href="@{/loanRecord/__${book.bookId}__}">Borrow</a></button>-->
                 </td>
                 <td th:if="${book.remaining == true}">
-                    <button class="btn btn-info"><a th:href="@{/view-book/__${book.bookId}__}">Info</a></button>
+                    <button class="btn btn-info"><a th:href="@{/loan-details/__${book.bookId}__}">Info</a></button>
                 </td>
                 <td>
                     <button class="btn btn-warning"><a th:href="@{/edit-book/__${book.bookId}__}">Edit</a></button>

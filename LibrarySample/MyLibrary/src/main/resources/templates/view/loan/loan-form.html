@@ -11,14 +11,18 @@
 <body>
 <div class="container">
     <h2>Borrow Book</h2>
-    <form method="post" action="@{loanRecord/__${bookId}__}">
+    <form method="post" th:action="@{/loanRecord}" th:object="${loanRecordDTO}">
+        <div class="form-group">
+            <label for="book">book id:</label>
+            <input th:field="*{book}" hidden="hidden" type="text" class="form-control" name="book" id="book" th:value="${loanRecordDTO.book}"/>
+        </div>
         <div class="form-group">
             <label for="studentId">Student ID:</label>
-            <input type="text" class="form-control" name="studentId" id="studentId" required/>
+            <input th:field="*{studentId}" type="text" class="form-control" name="studentId" id="studentId" required/>
         </div>
         <div class="form-group">
             <label for="returnDate">Return Date:</label>
-            <input type="date" class="form-control" name="returnDate" id="returnDate" required/>
+            <input th:field="*{returnDate}" type="date" class="form-control" name="returnDate" id="returnDate" required/>
         </div>
         <button type="submit" class="btn btn-default">Borrow Book</button>
     </form>

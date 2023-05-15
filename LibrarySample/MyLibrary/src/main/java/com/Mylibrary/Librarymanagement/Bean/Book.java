@@ -33,7 +33,7 @@ public class Book {
     }
 
     public boolean isRemaining() {
-        return remaining;
+        return this.remaining;
     }
 
     public void setRemaining(boolean remaining) {

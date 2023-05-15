@@ -5,6 +5,32 @@
     <title>Loan Details</title>
 </head>
 <body>
-
+<section>
+    <div class="container">
+        <h1>Loan details</h1>
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>Student Name</th>
+                <th>Book Name</th>
+                <th>Borrow Date</th>
+                <th>Return Date</th>
+            </tr>
+            </thead>
+            <tbody th:object="${loanRecords}">
+            <tr th:each="loanRecord : ${loanRecords}">
+                <td th:text="${loanRecord.studentId}"></td>
+                <td th:text="${student.studentCode}"></td>
+                <td th:text="${student.fullName}"></td>
+                <td th:text="${student.email}"></td>
+                <td th:text="${student.phoneNumber}"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="container text-center">
+        <a class="btn btn-default" href="/home">Back to Home page</a>
+    </div>
+</section>
 </body>
 </html>
