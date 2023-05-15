@@ -42,12 +42,19 @@ public class LoanController {
 //        if(loanRecord.isPresent()){
 //            modelAndView.addObject("loanRecord", loanRecord.get());
 //        }
-        modelAndView.addObject("loanRecordDTO",loanRecordDTO);
+        modelAndView.addObject("loanRecordDTO", loanRecordDTO);
         return modelAndView;
     }
 
+    @GetMapping("/loan-details/{bookId}")
+    public ModelAndView loanDetails(@PathVariable Integer bookId) {
+        Optional<LoanRecord> loanRecords = loanRecordService.findByBookId(bookId);
+        ModelAndView modelAndView = new ModelAndView("view/loan/loan-details");
+        modelAndView.addObject("loanRecords", loanRecords.orElse(null));
+        return modelAndView;
+    }
 
-    @PostMapping( "/loanRecord")
+    @PostMapping("/loanRecord")
     public String loanRecord(@ModelAttribute("loanRecordDTO") LoanRecordDTO loanRecordDTO) throws Exception {
 
         Student student = studentService.findById(loanRecordDTO.getStudentId())
@@ -68,25 +75,15 @@ public class LoanController {
         return "redirect:/books";
     }
 
-
-    @GetMapping("/loan-details/{bookId}")
-    public ModelAndView loanDetails(@PathVariable Integer bookId) {
-        Optional<LoanRecord> loanRecords = loanRecordService.findByBookId(bookId);
-        ModelAndView modelAndView = new ModelAndView("view/loan/loan-details");
-        modelAndView.addObject("loanRecords", loanRecords.orElse(null));
-        return modelAndView;
-    }
-
     @GetMapping(value = "/giveBack")
-    public String giveBack(@RequestParam("idLoanRecord") Integer loanId) throws Exception {
-        LoanRecord loanRecord = loanRecordService.findById(loanId).get();
-        if (loanRecord == null) {
-            throw new NotFoundIdRentalBookException();
-        }
+    public String giveBack(@ModelAttribute("loanRecord") LoanRecord loanRecord) throws Exception {
+        loanRecordService.findById(loanRecord.getLoanId());
+
         Book book = loanRecord.getBook();
-        loanRecordService.remove(loanId);
         book.setRemaining(false);
         bookService.save(book);
+
+        loanRecordService.remove(loanRecord.getLoanId());
         return "redirect:/books";
     }
 
