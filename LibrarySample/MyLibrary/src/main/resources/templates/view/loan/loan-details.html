@@ -29,7 +29,7 @@
         </table>
     </div>
     <div class="container text-right">
-        <a class="btn btn-danger" href="/giveBack">Give Back</a>
+        <a class="btn btn-danger" th:href="@{/giveBack/{id}(id = ${loanRecords.getLoanId()})}">Give Back</a>
     </div>
     <div class="container text-center">
         <a class="btn btn-default" href="/books">Back to Book List</a>

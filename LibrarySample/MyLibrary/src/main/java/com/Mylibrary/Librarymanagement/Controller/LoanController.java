@@ -75,15 +75,15 @@ public class LoanController {
         return "redirect:/books";
     }
 
-    @GetMapping(value = "/giveBack")
-    public String giveBack(@ModelAttribute("loanRecord") LoanRecord loanRecord) throws Exception {
-        loanRecordService.findById(loanRecord.getLoanId());
+    @GetMapping(value = "/giveBack/{id}")
+    public String giveBack(@PathVariable("id") Integer id) throws Exception {
+        LoanRecord loanRecord = loanRecordService.findById(id).get();
 
         Book book = loanRecord.getBook();
         book.setRemaining(false);
         bookService.save(book);
 
-        loanRecordService.remove(loanRecord.getLoanId());
+//        loanRecordService.remove(loanRecord.getLoanId());
         return "redirect:/books";
     }
 

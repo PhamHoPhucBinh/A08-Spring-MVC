@@ -1,7 +1,6 @@
 package com.Mylibrary.Librarymanagement.Bean;
 
 import javax.persistence.*;
-
 @Entity
 @Table(name = "STUDENT")
 public class Student {

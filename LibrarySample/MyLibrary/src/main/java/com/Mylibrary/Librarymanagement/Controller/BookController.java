@@ -1,23 +1,13 @@
 package com.Mylibrary.Librarymanagement.Controller;
 
 import com.Mylibrary.Librarymanagement.Bean.Book;
-import com.Mylibrary.Librarymanagement.Bean.LoanRecord;
-import com.Mylibrary.Librarymanagement.Bean.Student;
-import com.Mylibrary.Librarymanagement.Exception.BookRemainingZeroException;
-import com.Mylibrary.Librarymanagement.Exception.NotFoundIdRentalBookException;
 import com.Mylibrary.Librarymanagement.Service.Book.IBookService;
 import com.Mylibrary.Librarymanagement.Service.LoanRecord.ILoanRecordService;
 import com.Mylibrary.Librarymanagement.Service.Student.IStudentService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
-
-import java.time.Instant;
-import java.time.LocalDate;
-import java.time.ZoneId;
-import java.util.Date;
 import java.util.Optional;
 
 @Controller
@@ -91,12 +81,9 @@ public class BookController {
             return modelAndView;
         }
     }
-
     @PostMapping("/delete-book")
     public String deleteBook(@ModelAttribute("book") Book book) {
         bookService.remove(book.getBookId());
         return "redirect:books";
     }
-
-
 }
