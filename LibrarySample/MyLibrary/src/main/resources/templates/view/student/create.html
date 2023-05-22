@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" lang="">
 <head>
     <title>Create Student</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
@@ -10,19 +10,28 @@
     <form th:object="${student}" th:action="@{/Create-Student}" method="post">
         <div class="form-group">
             <label>Student Name</label>
-            <input type="text" th:field="*{fullName}" class="form-control" placeholder="Enter full name">
+            <label>
+                <input type="text" th:field="*{fullName}" class="form-control" placeholder="Enter full name">
+            </label>
         </div>
         <div class="form-group">
             <label>Student Code</label>
-            <input type="text" th:field="*{studentCode}" class="form-control" placeholder="Enter student's code">
+            <label>
+                <input type="text" th:field="*{studentCode}" class="form-control" placeholder="Enter student's code">
+            </label>
         </div>
         <div class="form-group">
             <label>Email</label>
-            <input type="text" th:field="*{email}" class="form-control" placeholder="Enter email">
+            <label>
+                <input type="text" th:field="*{email}" class="form-control" placeholder="Enter email"/>
+            </label>
         </div>
         <div class="form-group">
-            <label>Email</label>
-            <input type="number" th:field="*{phoneNumber}" class="form-control" placeholder="Enter Phone Number">
+            <label>Phone Number</label>
+            <label>
+                <input type="text" th:field="*{phoneNumber}" class="form-control" placeholder="Enter Phone Number"/>
+                <span th:if="${#fields.hasErrors('phoneNumber')}" th:errors="*{phoneNumber}">Phone Number Error</span>
+            </label>
         </div>
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>

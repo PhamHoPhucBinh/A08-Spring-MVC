@@ -1,6 +1,9 @@
 package com.Mylibrary.Librarymanagement.Bean;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
+import javax.validation.constraints.Pattern;
 @Entity
 @Table(name = "STUDENT")
 public class Student {
@@ -13,12 +16,19 @@ public class Student {
     private String studentCode;
 
     @Column(name = "FULL_NAME", nullable = false)
+    @NotEmpty
+    @Size(min = 2, max = 30)
     private String fullName;
 
     @Column(name = "EMAIL", unique = true)
+    @NotEmpty
+    @Size(min = 2, max = 30)
     private String email;
 
     @Column(name = "PHONE_NUMBER", unique = true)
+    @NotEmpty
+    @Size(min = 2, max = 30)
+    @Pattern(regexp = "(84|0[3|5|7|8|9])+([0-9]{8})\\b")
     private String phoneNumber;
 
     @Column(name = "ENABLED", nullable = false)

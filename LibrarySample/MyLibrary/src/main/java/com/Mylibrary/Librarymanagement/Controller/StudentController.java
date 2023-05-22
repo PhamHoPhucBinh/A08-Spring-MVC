@@ -2,19 +2,22 @@ package com.Mylibrary.Librarymanagement.Controller;
 
 
 import com.Mylibrary.Librarymanagement.Bean.Student;
-import com.Mylibrary.Librarymanagement.Service.Book.IBookService;
 import com.Mylibrary.Librarymanagement.Service.Student.IStudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.validation.Valid;
 import java.util.Optional;
 
 @Controller
+@Validated
 public class StudentController {
 
     @Autowired
@@ -28,7 +31,10 @@ public class StudentController {
     }
 
     @PostMapping("/Create-Student")
-    public ModelAndView saveStudent(@ModelAttribute("student") Student student) {
+    public ModelAndView saveStudent(@Valid @ModelAttribute("student") Student student, BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+            return new ModelAndView("view/student/create");
+        }
         studentService.save(student);
         ModelAndView modelAndView = new ModelAndView("view/student/create");
         modelAndView.addObject("student", new Student());
