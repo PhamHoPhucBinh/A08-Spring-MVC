@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>List of Books</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+</head>
+
+<body>
+<section>
+    <div class="container">
+        <h1>List of Phone</h1>
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>Phone Id</th>
+                <th>Phone Name</th>
+                <th>Price</th>
+                <th> Manufacturer</th>
+                <!--                <th>BUY</th>-->
+                <th>Edit</th>
+                <th>Delete</th>
+            </tr>
+            </thead>
+            <tbody th:object="${phones}">
+            <tr th:each="phone : ${phones}">
+                <td th:text="${phone.phoneId}"></td>
+                <td th:text="${phone.phoneName}"></td>
+                <td th:text="${phone.phonePrice}"></td>
+                <td th:text="${phone.manufacturer.getManufacturerName()}"></td>
+
+
+                <!--                <td th:if="${book.remaining == false}">-->
+                <!--                    <form method="get" th:action="@{/loan-form/__${book.bookId}__}">-->
+                <!--                        <button type="submit" class="btn btn-success">Borrow</button>-->
+                <!--                    </form>-->
+                <!--                    &lt;!&ndash;                    <button class="btn btn-success"><a th:href="@{/loanRecord/__${book.bookId}__}">Borrow</a></button>&ndash;&gt;-->
+                <!--                </td>-->
+                <!--                <td th:if="${book.remaining == true}">-->
+                <!--                    <button class="btn btn-info"><a th:href="@{/loan-details/__${book.bookId}__}">Info</a></button>-->
+                <!--                </td>-->
+                <td>
+                    <button class="btn btn-warning"><a th:href="@{/edit-phone/__${phone.phoneId}__}">Edit</a></button>
+                </td>
+                <td>
+                    <button class="btn btn-danger"><a th:href="@{/delete-phone/__${phone.phoneId}__}">Delete</a>
+                    </button>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="container text-center">
+        <a class="btn btn-default" href="/home">Back to Home page</a>
+    </div>
+</section>
+</body>
+</html>

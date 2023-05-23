@@ -5,7 +5,7 @@ import com.myshop.Bean.User;
 public interface UserService {
     Boolean checkUserName(String userName);
 
-    User findById(String id);
+    User findById(Integer id);
 
     Iterable<User> findAll();
 
