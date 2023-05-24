@@ -2,11 +2,10 @@ package com.myshop2.bean;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotEmpty;
-
+@Entity
 public class InvoiceDetails {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer invoiceDetailsId;
 
     @ManyToOne

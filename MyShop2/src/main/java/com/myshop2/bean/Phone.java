@@ -15,7 +15,6 @@ public class Phone {
     @ManyToOne
     @JoinColumn(name = "manufacturerId", nullable = false, referencedColumnName = "manufacturerId")
     private Manufacturer manufacturer;
-
     public Phone() {
     }
 

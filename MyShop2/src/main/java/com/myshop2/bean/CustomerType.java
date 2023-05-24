@@ -8,7 +8,6 @@ import jakarta.persistence.Id;
 @Entity
 public class CustomerType {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer customerTypeId;
 
     private String customerTypeName;
