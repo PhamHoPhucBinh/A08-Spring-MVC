@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Delete Customer</title>
+</head>
+<body>
+<h1>Delete Customer</h1>
+<h2>Are you sure?</h2>
+<p>
+  <a href="/customers">Customer list</a>
+</p>
+<form th:action="@{/Delete-Customer}" th:object="${customer}" method="post">
+  <input name="id" hidden="hidden" th:field="*{customerId}" th:value="${customer.customerId}">
+  <table>
+    <tr>
+      <td>Customer Name:</td>
+      <td th:text="${customer.customerName}"></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><input type="submit" value="Delete this Customer?"></td>
+    </tr>
+  </table>
+</form>
+</body>
+</html>

@@ -8,7 +8,7 @@ import jakarta.validation.constraints.NotEmpty;
 @Entity
 public class Customer {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer customerId;
 
     @NotBlank
@@ -25,7 +25,7 @@ public class Customer {
     private String customerBirthday;
 
     @NotEmpty
-    private Integer customerGender;
+    private String customerGender;
 
     @NotBlank
     @NotEmpty
@@ -38,7 +38,7 @@ public class Customer {
     public Customer() {
     }
 
-    public Customer(Integer customerId, String customerName, String customerPhone, CustomerType customerType, String customerBirthday, Integer customerGender, String customerEmail, String customerAddress) {
+    public Customer(Integer customerId, String customerName, String customerPhone, CustomerType customerType, String customerBirthday, String customerGender, String customerEmail, String customerAddress) {
         this.customerId = customerId;
         this.customerName = customerName;
         this.customerPhone = customerPhone;
@@ -89,11 +89,11 @@ public class Customer {
         this.customerBirthday = customerBirthday;
     }
 
-    public Integer getCustomerGender() {
+    public String getCustomerGender() {
         return customerGender;
     }
 
-    public void setCustomerGender(Integer customerGender) {
+    public void setCustomerGender(String customerGender) {
         this.customerGender = customerGender;
     }
 

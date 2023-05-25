@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Delete Phone</title>
+</head>
+<body>
+<h1>Delete Phone</h1>
+<h2>Are you sure?</h2>
+<p>
+  <a href="/phones">Phone list</a>
+</p>
+<form th:action="@{/Delete-Phone}" th:object="${phone}" method="post">
+  <input name="id" hidden="hidden" th:field="*{phoneId}" th:value="${phone.phoneId}">
+  <table>
+    <tr>
+      <td>Phone Name:</td>
+      <td th:text="${phone.phoneName}"></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><input type="submit" value="Delete this Phone?"></td>
+    </tr>
+  </table>
+</form>
+</body>
+</html>

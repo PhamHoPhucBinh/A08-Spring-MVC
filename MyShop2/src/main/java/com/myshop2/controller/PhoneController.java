@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Controller
-@RequestMapping
+//@RequestMapping
 public class PhoneController {
     @Autowired
     private IPhoneService phoneService;
@@ -41,7 +41,7 @@ public class PhoneController {
     }
 
     @PostMapping("/Create-Phone")
-    public ModelAndView saveBook(@ModelAttribute("book") Phone phone) {
+    public ModelAndView savePhone(@ModelAttribute("phone") Phone phone) {
         phoneService.save(phone);
         ModelAndView modelAndView = new ModelAndView("view/phone/create");
         modelAndView.addObject("phone", new Phone());
@@ -54,17 +54,19 @@ public class PhoneController {
     public ModelAndView showEditForm(@PathVariable Integer phoneId) {
         Optional<Phone> phone = phoneService.findById(phoneId);
         if (phone.isPresent()) {
+            Iterable<Manufacturer> manufacturers = manufacturerService.findAll();
             ModelAndView modelAndView = new ModelAndView("view/phone/edit");
+            modelAndView.addObject("manufacturers", manufacturers);
             modelAndView.addObject("phone", phone.get());
             return modelAndView;
         } else {
-            ModelAndView modelAndView = new ModelAndView("/error.404");
+            ModelAndView modelAndView = new ModelAndView("/error-404");
             return modelAndView;
         }
     }
 
     @PostMapping("/Edit-Phone")
-    public ModelAndView updateBook(@ModelAttribute("phone") Phone phone) {
+    public ModelAndView updatePhone(@ModelAttribute("phone") Phone phone) {
         phoneService.save(phone);
         ModelAndView modelAndView = new ModelAndView("view/phone/edit");
         modelAndView.addObject("phone", phone);
@@ -82,14 +84,14 @@ public class PhoneController {
             return modelAndView;
 
         } else {
-            ModelAndView modelAndView = new ModelAndView("/error.404");
+            ModelAndView modelAndView = new ModelAndView("/error-404");
             return modelAndView;
         }
     }
 
     @PostMapping("/Delete-Phone")
-    public String deleteBook(@ModelAttribute("phone") Phone phone) {
+    public String deletePhone(@ModelAttribute("phone") Phone phone) {
         phoneService.remove(phone.getPhoneId());
-        return "redirect:books";
+        return "redirect:/phones";
     }
 }

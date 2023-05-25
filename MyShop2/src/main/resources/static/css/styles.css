@@ -1,0 +1,10 @@
+body {
+    background: url('https://img.freepik.com/free-vector/flat-geometric-background_23-2148957201.jpg?w=1380&t=st=1684989540~exp=1684990140~hmac=86155032baa691a05d57f3c3a9709a2c0a2518289f702e4555388c61847bd3c1') no-repeat center center fixed;
+    background-size: cover;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+}
+a {
+    font-size: 200%;
+}
