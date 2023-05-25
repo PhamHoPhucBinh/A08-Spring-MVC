@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.Pattern;
 
 @Entity
 public class Customer {
@@ -11,10 +12,11 @@ public class Customer {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer customerId;
 
-    @NotBlank
+    @NotEmpty(message = "name is required")
     private String customerName;
 
-    @NotBlank
+    @NotEmpty(message = "required")
+    @Pattern(regexp = "^(84|0[3|5|7|8|9])+([0-9]{8})\\b$")
     private String customerPhone;
 
     @ManyToOne
@@ -28,11 +30,12 @@ public class Customer {
     private String customerGender;
 
     @NotBlank
-    @NotEmpty
+    @NotEmpty(message = "email is required")
     @Email
     private String customerEmail;
 
     @NotBlank
+    @NotEmpty(message = "address is required")
     private String customerAddress;
 
     public Customer() {

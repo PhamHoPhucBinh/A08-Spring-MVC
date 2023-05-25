@@ -6,8 +6,11 @@ import com.myshop2.bean.Manufacturer;
 import com.myshop2.bean.Phone;
 import com.myshop2.service.customer.ICustomerService;
 import com.myshop2.service.customer.ICustomerServiceType;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -40,12 +43,19 @@ public class CustomerController {
     }
 
     @PostMapping("/Create-Customer")
-    public ModelAndView saveCustomer(@ModelAttribute("customer") Customer customer) {
-        customerService.save(customer);
-        ModelAndView modelAndView = new ModelAndView("view/customer/create");
-        modelAndView.addObject("customer", new Customer());
-        modelAndView.addObject("message", "create successfully");
-        return new ModelAndView("redirect:/customers");
+    public ModelAndView saveCustomer(@Valid @ModelAttribute("customer") Customer customer, BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+            ModelAndView modelAndView = new ModelAndView("view/customer/create");
+            modelAndView.addObject("customerTypes", customerServiceType.findAll());
+            modelAndView.addObject("message", "NOT ALLOW PHONE NUMBER FORMAT");
+            return modelAndView;
+        } else {
+            customerService.save(customer);
+            ModelAndView modelAndView = new ModelAndView("view/customer/create");
+            modelAndView.addObject("customer", new Customer());
+            modelAndView.addObject("message", "Customer created successfully.");
+            return modelAndView;
+        }
     }
 
     // TODO: 24-May-23 : edit
