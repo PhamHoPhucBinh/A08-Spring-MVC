@@ -35,7 +35,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
             throw new UsernameNotFoundException("User " + userName + " was not found in the database");
         }
 
-        List<UserRole> userRoles = this.userRoleRepository.findByAppUser(appUser);
+        List<UserRole> userRoles = this.userRoleRepository.findAllByAppUser_UserName(appUser.getUserName());
 
         // Dựa vào list quyền trả về mình tạo đối tượng GrantedAuthority  của spring cho quyền đó
         List<GrantedAuthority> grantList = new ArrayList<GrantedAuthority>();

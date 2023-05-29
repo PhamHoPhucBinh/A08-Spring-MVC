@@ -2,10 +2,7 @@ package com.myshopjava8.bean;
 
 
 import javax.persistence.*;
-import javax.validation.constraints.Email;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.Pattern;
+import javax.validation.constraints.*;
 
 @Entity
 public class Customer {
@@ -16,18 +13,19 @@ public class Customer {
     @NotEmpty(message = "name is required")
     private String customerName;
 
-    @NotEmpty(message = "required")
-    @Pattern(regexp = "^(84|0[3|5|7|8|9])+([0-9]{8})\\b$")
+    @NotEmpty(message = "Phone is required")
+    @Pattern(regexp = "^(84|0[3|5|7|8|9])+([0-9]{8})\\b$",message = "abc")
     private String customerPhone;
 
     @ManyToOne
+    @NotNull(message = "let's choose one")
     @JoinColumn(name = "customerTypeId", nullable = false, referencedColumnName = "customerTypeId")
     private CustomerType customerType;
 
-    @NotEmpty
+    @NotEmpty(message = "let's choose one")
     private String customerBirthday;
 
-    @NotEmpty
+    @NotNull(message = "let's choose one")
     private String customerGender;
 
     @NotBlank

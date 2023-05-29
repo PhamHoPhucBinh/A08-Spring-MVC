@@ -33,10 +33,11 @@
             </thead>
             <tbody th:object="${phones}">
             <tr th:each="phone : ${phones}">
+                <td ><input class="checkBox" th:id="${phone.phoneId}" type="checkbox" value="off" onchange="getSum()"></td>
                 <td th:text="${phone.phoneId}"></td>
                 <td th:text="${phone.phoneName}"></td>
                 <td th:text="${phone.manufacturer.manufacturerName}"></td>
-                <td th:text="${phone.phonePrice}"></td>
+                <td th:text="${#numbers.formatDecimal(phone.phonePrice, 3, 0, 'COMMA')}">VND</td>
 
 
                 <!--                <td th:if="${book.remaining == false}">-->
@@ -55,12 +56,30 @@
                     <button class="btn btn-danger"><a th:href="@{/Delete-Phone/__${phone.phoneId}__}"/>Delete</button>
                 </td>
             </tr>
+
             </tbody>
         </table>
+        <button >BUY</button>
+        <p id="result"></p>
     </div>
     <div class="container text-center">
         <a class="btn btn-default btn-lg" href="/home">Back to Home page</a>
     </div>
 </section>
 </body>
+<script th:inline="javascript">
+    function getSum(){
+        let sum =0;
+        let phoneList = [[${phones}]];
+        for (let i=0; i<phoneList.length; i++){
+            let isChecked = document.getElementById(phoneList[i].phoneId).checked;
+            if(isChecked){
+                sum+= phoneList[i].phonePrice;
+            }
+        }
+        document.getElementById("result").innerText = "Total : " + sum;
+    }
+
+    // console.log(phoneList)
+</script>
 </html>
