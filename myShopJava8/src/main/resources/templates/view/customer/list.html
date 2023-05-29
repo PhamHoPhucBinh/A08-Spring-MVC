@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>List of Customer</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+          crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+
+<body  style="font-size: 150%">
+<section>
+    <div class="container">
+        <h1>List of Customers</h1>
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>Id</th>
+                <th>Customer Name</th>
+                <th>Customer Type</th>
+                <th>Phone Number</th>
+                <th>Birthday</th>
+                <th>Gender</th>
+                <th>Email</th>
+                <th>Address</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </tr>
+            </thead>
+            <tbody th:object="${customers}">
+            <tr th:each="customer : ${customers}">
+                <td th:text="${customer.customerId}"></td>
+                <td th:text="${customer.customerName}"></td>
+                <td th:text="${customer.customerType.customerTypeName}"></td>
+                <td th:text="${customer.customerPhone}"></td>
+                <td th:text="${customer.customerBirthday}"></td>
+                <td th:text="${customer.customerGender}"></td>
+                <td th:text="${customer.customerEmail}"></td>
+                <td th:text="${customer.customerAddress}"></td>
+                <!--                <td th:if="${book.remaining == false}">-->
+                <!--                    <form method="get" th:action="@{/loan-form/__${book.bookId}__}">-->
+                <!--                        <button type="submit" class="btn btn-success">Borrow</button>-->
+                <!--                    </form>-->
+                <!--                    &lt;!&ndash;                    <button class="btn btn-success"><a th:href="@{/loanRecord/__${book.bookId}__}">Borrow</a></button>&ndash;&gt;-->
+                <!--                </td>-->
+                <!--                <td th:if="${book.remaining == true}">-->
+                <!--                    <button class="btn btn-info"><a th:href="@{/loan-details/__${book.bookId}__}">Info</a></button>-->
+                <!--                </td>-->
+                <td>
+                    <button class="btn btn-warning"><a th:href="@{/Edit-Customer/__${customer.customerId}__}"/>Edit</button>
+                </td>
+                <td>
+                    <button class="btn btn-danger"><a th:href="@{/Delete-Customer/__${customer.customerId}__}"/>Delete</button>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="container text-center">
+        <a class="btn btn-default btn-lg" href="/home">Back to Home page</a>
+    </div>
+</section>
+</body>
+</html>
