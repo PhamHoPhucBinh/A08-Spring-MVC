@@ -14,7 +14,7 @@ public class Customer {
     private String customerName;
 
     @NotEmpty(message = "Phone is required")
-    @Pattern(regexp = "^(84|0[3|5|7|8|9])+([0-9]{8})\\b$",message = "abc")
+    @Pattern(regexp = "^(84|0[3|5|7|8|9])+([0-9]{8})\\b$",message = "wrong phone format ")
     private String customerPhone;
 
     @ManyToOne

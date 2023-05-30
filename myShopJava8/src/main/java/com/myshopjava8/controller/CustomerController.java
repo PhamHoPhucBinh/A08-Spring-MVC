@@ -47,13 +47,13 @@ public class CustomerController {
         if (bindingResult.hasErrors()) {
             ModelAndView modelAndView = new ModelAndView("view/customer/create");
             modelAndView.addObject("customerTypes", customerServiceType.findAll());
-//            modelAndView.addObject("message", "NOT ALLOW PHONE NUMBER FORMAT");
             return modelAndView;
         } else {
             customerService.save(customer);
             ModelAndView modelAndView = new ModelAndView("view/customer/create");
             modelAndView.addObject("customer", new Customer());
-            modelAndView.addObject("message", "Customer created successfully.");
+//            modelAndView.addObject("message", "Customer created successfully.");
+            modelAndView.addObject("success", true);
             return modelAndView;
         }
     }
