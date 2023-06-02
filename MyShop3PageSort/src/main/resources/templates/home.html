@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<head>
+  <title>Home Page</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Bootstrap CSS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+          integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+          crossorigin="anonymous"></script>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+        crossorigin="anonymous">
+  <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body style="font-size: 150%">
+<div class="container-fluid">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a style="font-size: 150% " class="navbar-brand" href="/home ">Hệ Thống Quản Lí Học Tập</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDarkDropdown"
+            aria-controls="navbarNavDarkDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavDarkDropdown">
+      <ul class="navbar-nav">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" id="navbarCourse" role="button" data-bs-toggle="dropdown"
+             aria-expanded="false">
+            Môn học
+          </a>
+          <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarCourse">
+            <li><a class="dropdown-item" href="course/create-course">Tạo lớp học mới</a></li>
+            <li><a class="dropdown-item" href="course/show">các lớp hiện có</a></li>
+          </ul>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" id="navbarStudent" role="button" data-bs-toggle="dropdown"
+             aria-expanded="false">
+            Học Sinh
+          </a>
+          <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarStudent">
+            <li><a class="dropdown-item" href="student/create-student">Tạo học sinh mới</a></li>
+            <li><a class="dropdown-item" href="student/show">Hiển thị tất cả học sinh</a></li>
+          </ul>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" id="navbarEnrollment" role="button" data-bs-toggle="dropdown"
+             aria-expanded="false">
+            Ghi Danh
+          </a>
+          <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarEnrollment">
+            <li><a class="dropdown-item" href="enrollment/create-enrollment">Đăng kí học</a></li>
+            <li><a class="dropdown-item" href="enrollment/show">danh sách ghi danh</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </nav>
+</div>
+<div>
+</div>
+</body>
