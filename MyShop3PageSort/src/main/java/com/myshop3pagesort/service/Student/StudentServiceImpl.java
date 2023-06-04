@@ -18,8 +18,8 @@ public class StudentServiceImpl implements StudentService {
     }
 
     @Override
-    public Page<Student> findByName(Pageable pageable, String name) {
-        return studentRepository.findByStudentNameLike(pageable, name);
+    public Page<Student> findByName(String name,Pageable pageable ) {
+        return studentRepository.findByStudentNameLike(name,pageable);
     }
 
     @Override

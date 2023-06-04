@@ -7,7 +7,7 @@ import org.springframework.data.domain.Pageable;
 public interface StudentService {
     Page<Student> showAll(Pageable pageable);
 
-    Page<Student> findByName(Pageable pageable, String name);
+    Page<Student> findByName(String name,Pageable pageable );
 
     Iterable<Student> findAll();
 

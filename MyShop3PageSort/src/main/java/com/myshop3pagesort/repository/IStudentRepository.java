@@ -9,5 +9,6 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface IStudentRepository extends JpaRepository<Student, Integer> {
-    Page<Student> findByStudentNameLike(Pageable pageable, String name);
+    Page<Student> findByStudentNameLike(String name,Pageable pageable );
+    Page<Student> findAll(Pageable pageable);
 }
