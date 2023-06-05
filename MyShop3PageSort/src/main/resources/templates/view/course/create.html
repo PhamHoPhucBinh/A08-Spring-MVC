@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org" lang="">
 <head>
-    <title>Tạo học sinh mới</title>
+    <title>Tạo lớp mới</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <!-- Bootstrap CSS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
@@ -12,30 +12,30 @@
     <link rel="stylesheet" href="/css/styles.css">
 </head>
 <body>
-<h1 class="mb-3">Tạo Học Sinh mới</h1>
+<h1 class="mb-3">Tạo Lớp mới</h1>
 <th:block th:if="${message}">
     <p th:text="${message}"></p>
 </th:block>
 <div>
-    <form th:object="${student}" th:action="@{/student/create-student}" method="post">
+    <form th:object="${course}" th:action="@{/course/create-course}" method="post">
 
         <div class="mb-3">
-            <label for="studentName" class="form-label">Student name</label>
-            <input type="text" id="studentName" th:field="*{studentName}" class="form-control" aria-describedby placeholder="Enter Student Name">
-        </div>z
+            <label for="courseName" class="form-label">Course name</label>
+            <input type="text" id="courseName" th:field="*{courseName}" class="form-control" aria-describedby placeholder="Enter Student Name">
+        </div>
 
 
         <div class="mb-3">
-            <label for="studentEmail" class="form-label">Student Email</label>
-            <input type="text" id="studentEmail" aria-describedby th:field="*{email}" class="form-control"
-                   placeholder="Enter Student Email">
+            <label for="duration" class="form-label">duration</label>
+            <input type="text" id="duration" aria-describedby th:field="*{duration}" class="form-control"
+                   placeholder="duration">
         </div>
 
         <button type="submit" class="btn btn-primary mb-3">Create</button>
     </form>
 
     <div class="container text-center">
-        <a class="btn btn-default" href="/home">Back to Home page</a>
+        <a class="btn btn-default" href="/show">Back to Home page</a>
     </div>
 </div>
 
