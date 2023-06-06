@@ -45,14 +45,14 @@
     </div>
 </div>
 <div class="d-flex justify-content-between align-items-center">
-    <a class="btn btn-primary" th:href="@{/student/search(page=${students.number - 1})}"
+    <a class="btn btn-primary" th:href="@{/student/search(search=${param.search},page=${students.number - 1})}"
        th:if="${students.hasPrevious()}">
         Previous
     </a>
     <span class="mx-2">
         Page <span th:text="${students.number + 1}"></span>/<span th:text="${students.totalPages}"></span>
     </span>
-    <a class="btn btn-primary" th:href="@{/student/search(page=${students.number + 1})}"
+    <a class="btn btn-primary" th:href="@{/student/search(search=${param.search}, page=${students.number + 1})}"
        th:if="${students.hasNext()}">
         Next
     </a>

@@ -40,7 +40,7 @@ public class StudentController {
 
 
     @GetMapping(value = "/search")
-    public ModelAndView showListSearch(@PageableDefault(value = 3) Pageable
+    public ModelAndView showListSearch(@PageableDefault(value = 3, sort = "studentName") Pageable
                                                pageable, @RequestParam(value = "search", required = false) String name) {
         Page<Student> students = studentService.findByName("%" + name + "%", pageable);
         ModelAndView modelAndView = new ModelAndView("view/student/resultSearchStudent");
@@ -51,17 +51,6 @@ public class StudentController {
         return modelAndView;
     }
 
-//    @GetMapping(value = "/search/{searchValue}")
-//    public ModelAndView showListSearch(@PageableDefault(value = 3) Pageable
-//                                               pageable, @PathVariable("searchValue") String name) {
-//        Page<Student> students = studentService.findByName("%" + name + "%", pageable);
-//        ModelAndView modelAndView = new ModelAndView("view/student/resultSearchStudent");
-//        modelAndView.addObject("students", students);
-//        if (students.getContent().size() == 0) {
-//            modelAndView.addObject("message", "Không tìm thấy học sinh nào .");
-//        }
-//        return modelAndView;
-//    }
 
     @GetMapping("/create-student")
     public ModelAndView showCreateForm() {
@@ -102,6 +91,7 @@ public class StudentController {
             return "redirect:/student/show";
         }
     }
+
     @GetMapping("/delete-student/{studentId}")
     public ModelAndView showDeleteForm(@PathVariable Integer studentId) {
         Optional<Student> student = Optional.ofNullable(studentService.findById(studentId));
@@ -115,6 +105,7 @@ public class StudentController {
             return modelAndView;
         }
     }
+
     @PostMapping("/delete-student")
     public String deleteStudent(@ModelAttribute("student") Student student) {
         studentService.delete(student);
