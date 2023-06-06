@@ -26,9 +26,9 @@
 </div>
 <section>
     <div class="container">
-        <h1>Danh sách Lớp Học</h1>
+        <h1>Danh sách Đăng Kí</h1>
 
-        <form th:action="@{/course/search}" method="get">
+        <form th:action="@{/enrollment/search}" method="get">
             Search by first name:
             <input name="search" type="text"/>
             <input type="submit" value="Search"/>
@@ -37,39 +37,41 @@
             <thead>
             <tr>
                 <th>Id</th>
+                <th>Tên HS</th>
                 <th>Tên Lớp</th>
-                <th>Duration</th>
+                <th>Ngày Đăng Kí</th>
                 <th>Edit</th>
                 <th>Delete</th>
             </tr>
             </thead>
-            <tbody th:object="${courses}">
-            <tr th:each="course : ${courses}">
-                <td th:text="${course.courseId}"></td>
-                <td th:text="${course.courseName}"></td>
-                <td th:text="${course.duration}"></td>
+            <tbody th:object="${enrollments}">
+            <tr th:each="enrollment : ${enrollments}">
+                <td th:text="${enrollment.enrollmentId}"></td>
+                <td th:text="${enrollment.student.studentName}"></td>
+                <td th:text="${enrollment.course.courseName}"></td>
+                <td th:text="${enrollment.enrollmentDate}"></td>
                 <td>
                     <button class="btn btn-warning"><a
-                            th:href="@{/course/edit-course/__${course.courseId}__}">Edit</a></button>
+                            th:href="@{/enrollment/edit-enrollment/__${enrollment.enrollmentId}__}">Edit</a></button>
                 </td>
                 <td>
                     <button class="btn btn-danger"><a
-                            th:href="@{/course/delete-course/__${course.courseId}__}">Delete</a>
+                            th:href="@{/enrollment/edit-enrollment/__${enrollment.enrollmentId}__}">Delete</a>
                     </button>
                 </td>
             </tr>
             </tbody>
         </table>
         <div class="d-flex justify-content-between align-items-center">
-            <a class="btn btn-primary" th:href="@{/course/show(page=${courses.number - 1})}"
-               th:if="${courses.hasPrevious()}">
+            <a class="btn btn-primary" th:href="@{/enrollment/show(page=${enrollments.number - 1})}"
+               th:if="${enrollments.hasPrevious()}">
                 Previous
             </a>
             <span class="mx-2">
-        Page <span th:text="${courses.number + 1}"></span>/<span th:text="${courses.totalPages}"></span>
+        Page <span th:text="${enrollments.number + 1}"></span>/<span th:text="${enrollments.totalPages}"></span>
     </span>
-            <a class="btn btn-primary" th:href="@{/course/show(page=${courses.number + 1})}"
-               th:if="${courses.hasNext()}">
+            <a class="btn btn-primary" th:href="@{/enrollment/show(page=${enrollments.number + 1})}"
+               th:if="${enrollments.hasNext()}">
                 Next
             </a>
         </div>

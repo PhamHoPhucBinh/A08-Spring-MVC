@@ -96,9 +96,9 @@ public class CourseController {
     }
 
     @GetMapping(value = "/search")
-    public ModelAndView showListSearch(@PageableDefault(value = 3) Pageable
+    public ModelAndView showListSearch(@PageableDefault(value = 3, sort = "courseName") Pageable
                                                pageable, @RequestParam(value = "search", required = false) String name) {
-        Page<Course> courses = courseService.findByName(pageable,"%" + name + "%");
+        Page<Course> courses = courseService.findByName(pageable, "%" + name + "%");
         ModelAndView modelAndView = new ModelAndView("view/course/search");
         modelAndView.addObject("courses", courses);
         if (courses.getContent().size() == 0) {
