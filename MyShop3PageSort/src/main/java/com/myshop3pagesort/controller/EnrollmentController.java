@@ -12,12 +12,16 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
+import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
+import java.sql.Date;
 
 @Controller
 @RequestMapping(value = "/enrollment")
@@ -40,35 +44,6 @@ public class EnrollmentController {
         return modelAndView;
     }
 
-
-    //    @GetMapping("/create-enrollment")
-//    public ModelAndView showCreateForm() {
-//        Iterable<Student> students = studentService.findAll();
-//        Iterable<Course> courses = courseService.findAll();
-//        ModelAndView modelAndView = new ModelAndView("view/enrollment/create");
-//
-//        modelAndView.addObject("courses", courses);
-//        modelAndView.addObject("students", students);
-//        modelAndView.addObject("enrollment", new Enrollment());
-//        return modelAndView;
-//    }
-//
-//    @PostMapping("/create-enrollment")
-//    public ModelAndView saveEnrollment(@Valid @ModelAttribute("enrollment") Enrollment enrollment  , BindingResult bindingResult) {
-//        if (bindingResult.hasErrors()) {
-//            ModelAndView modelAndView = new ModelAndView("view/enrollment/create");
-//            modelAndView.addObject("courses", courseService.findAll());
-//            modelAndView.addObject("students", studentService.findAll());
-//            modelAndView.addObject("message", "k tim thay thong tin");
-//            return modelAndView;
-//        } else {
-//            enrollmentService.save(enrollment);
-//            ModelAndView modelAndView = new ModelAndView("view/enrollment/create");
-//            modelAndView.addObject("enrollment", new Enrollment());
-//            modelAndView.addObject("message", "Enrollment created successfully.");
-//            return modelAndView;
-//        }
-//    }
     @GetMapping("/create-enrollment")
     public ModelAndView showCreateForm() {
         Iterable<Student> students = studentService.findAll();
@@ -98,4 +73,21 @@ public class EnrollmentController {
             return modelAndView;
         }
     }
+
+    @GetMapping("/delete-enrollment/{id}")
+    public String deleteSubject(@PathVariable("id") int id, RedirectAttributes redirectAttributes) {
+        enrollmentService.deleteById(id);
+        redirectAttributes.addFlashAttribute("message", "Xóa thành công!");
+        return "redirect:/enrollment/show";
+    }
+
+    @PostMapping("/edit-enrollment")
+    public ResponseEntity<Void> updateEnrollment(@RequestParam Integer enrollmentId,
+                                                 @RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") Date enrollmentDate) {
+        Enrollment enrollment = enrollmentService.findById(enrollmentId);
+        enrollment.setEnrollmentDate(enrollmentDate);
+        enrollmentService.save(enrollment);
+        return ResponseEntity.ok().build();
+    }
+
 }

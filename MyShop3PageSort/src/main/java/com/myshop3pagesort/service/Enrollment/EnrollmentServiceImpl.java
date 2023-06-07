@@ -40,7 +40,7 @@ public class EnrollmentServiceImpl implements EnrollmentService {
     }
 
     @Override
-    public void delete(Enrollment enrollment) {
-        enrollmentRepository.delete(enrollment);
+    public void deleteById(Integer id) {
+        enrollmentRepository.deleteById(id);
     }
 }

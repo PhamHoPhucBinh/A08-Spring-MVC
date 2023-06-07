@@ -19,6 +19,6 @@ public interface EnrollmentService {
 
     void save(Enrollment enrollment);
 
-    void delete(Enrollment enrollment);
+    void deleteById(Integer id);
 
 }
