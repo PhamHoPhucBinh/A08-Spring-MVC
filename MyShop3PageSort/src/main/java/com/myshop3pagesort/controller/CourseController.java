@@ -42,7 +42,7 @@ public class CourseController {
     }
 
     @PostMapping("/create-course")
-    public ModelAndView saveCourse(@ModelAttribute("phone") Course course) {
+    public ModelAndView saveCourse(@ModelAttribute("course") Course course) {
         courseService.save(course);
         ModelAndView modelAndView = new ModelAndView("view/course/create");
         modelAndView.addObject("course", new Course());

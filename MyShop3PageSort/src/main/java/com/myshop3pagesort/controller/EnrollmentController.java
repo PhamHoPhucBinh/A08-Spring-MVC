@@ -80,8 +80,7 @@ public class EnrollmentController {
         return modelAndView;
     }
 
-    @PostMapping("/create-student")
-    @RequestMapping(method = RequestMethod.POST)
+    @PostMapping("/create-enrollment")
     public ModelAndView saveEnrollment(@Valid @ModelAttribute("enrollment") Enrollment enrollment  , BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             ModelAndView modelAndView = new ModelAndView("view/enrollment/create");
