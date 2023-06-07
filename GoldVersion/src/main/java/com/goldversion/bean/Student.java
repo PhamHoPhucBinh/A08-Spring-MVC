@@ -1,10 +1,7 @@
 package com.goldversion.bean;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import java.time.LocalDate;
+import javax.persistence.*;
+import java.sql.Date;
 
 @Entity
 public class Student {
@@ -13,13 +10,13 @@ public class Student {
     private Integer studentId;
     private String studentName;
     private String gender;
-    private LocalDate birthday;
+    private Date birthday;
     private String grade;
 
     public Student() {
     }
 
-    public Student(Integer studentId, String studentName, String gender, LocalDate birthday, String grade) {
+    public Student(Integer studentId, String studentName, String gender, Date birthday, String grade) {
         this.studentId = studentId;
         this.studentName = studentName;
         this.gender = gender;
@@ -51,11 +48,11 @@ public class Student {
         this.gender = gender;
     }
 
-    public LocalDate getBirthday() {
+    public Date getBirthday() {
         return birthday;
     }
 
-    public void setBirthday(LocalDate birthday) {
+    public void setBirthday(Date birthday) {
         this.birthday = birthday;
     }
 

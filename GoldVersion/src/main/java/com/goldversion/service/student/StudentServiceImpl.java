@@ -40,7 +40,7 @@ public class StudentServiceImpl implements StudentService {
     }
 
     @Override
-    public void delete(Student student) {
-        studentRepository.delete(student);
+    public void deleteById(Integer id) {
+        studentRepository.deleteById(id);
     }
 }

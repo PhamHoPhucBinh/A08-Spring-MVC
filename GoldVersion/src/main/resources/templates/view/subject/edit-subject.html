@@ -13,27 +13,33 @@
     <link rel="stylesheet" href="/css/styles.css">
 </head>
 <body>
-<h1>Edit Student</h1>
+<h1>Edit Subject</h1>
 <p>
-    <a href="/student/show">Student list</a>
+    <a href="/subject/show-subject">Subject list</a>
 </p>
 <th:block th:if="${message}">
     <p th:text="${message}"></p>
 </th:block>
 <div>
-    <form th:object="${student}" th:action="@{/student/edit-student}" method="post">
-        <input th:type="hidden" name="id" th:field="*{studentId}">
+    <form th:object="${subject}" th:action="@{/subject/edit-subject}" method="post">
+        <input th:type="hidden" name="id" th:field="*{subjectId}">
 
         <div class="mb-3">
-            <label for="studentName" class="form-label">Student name</label>
-            <input type="text" id="studentName" th:field="*{studentName}" class="form-control" aria-describedby
-                   placeholder="Enter Student Name">
+            <label for="subjectName" class="form-label">Subject name</label>
+            <input type="text" id="subjectName" th:field="*{subjectName}" class="form-control" aria-describedby
+                   placeholder="Enter Subject Name" required>
         </div>
 
         <div class="mb-3">
-            <label for="email" class="form-label">Student Email</label>
-            <input type="text" id="email" aria-describedby th:field="*{email}" class="form-control"
-                   placeholder="Enter Student Email">
+            <label for="credits" class="form-label">Amount of Credits</label>
+            <input type="number" id="credits" aria-describedby th:field="*{credits}" class="form-control"
+                   placeholder="Enter Amount of Credits" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="subjectClass" class="form-label">subject Class</label>
+            <input type="text" id="subjectClass" th:field="*{subjectClass}" class="form-control" aria-describedby
+                   placeholder="Enter Subject Class" required>
         </div>
 
         <button type="submit" class="btn btn-primary mb-3">Edit</button>
@@ -43,14 +49,5 @@
         <a class="btn btn-default" href="/home">Back to Home page</a>
     </div>
 </div>
-<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"
-        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaR7jl"
-        crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"
-        integrity="sha384-0BgCjL632XqaywXHAnflUO8UrbVjCtPIjcFoJOFM8WmjBJf42biyDRD+ho/F6/uQ"
-        crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.min.js"
-        integrity="sha384-f3Ix2O/0a+ECMfxiU3LsL+3AjnmkwWfLo94twHsmm3g0f90gC2jrGoF/RD7ZwS50"
-        crossorigin="anonymous"></script>
 </body>
 </html>

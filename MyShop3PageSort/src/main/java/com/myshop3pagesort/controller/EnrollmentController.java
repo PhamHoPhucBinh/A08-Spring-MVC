@@ -36,7 +36,11 @@ public class EnrollmentController {
     @GetMapping(value = "/show")
     public ModelAndView displayPageEnrollment(@PageableDefault(value = 3, sort = "enrollmentId", direction = Sort.Direction.DESC) Pageable pageable) {
         Page<Enrollment> enrollments = enrollmentService.showAll(pageable);
+        Iterable<Student> students = studentService.findAll();
+        Iterable<Course> courses = courseService.findAll();
         ModelAndView modelAndView = new ModelAndView("view/enrollment/show");
+        modelAndView.addObject("courses", courses);
+        modelAndView.addObject("students", students);
         modelAndView.addObject("enrollments", enrollments);
         if (enrollments.getContent().size() == 0) {
             modelAndView.addObject("message", "Chưa có lớp nào cả.");
@@ -86,6 +90,7 @@ public class EnrollmentController {
                                                  @RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") Date enrollmentDate) {
         Enrollment enrollment = enrollmentService.findById(enrollmentId);
         enrollment.setEnrollmentDate(enrollmentDate);
+
         enrollmentService.save(enrollment);
         return ResponseEntity.ok().build();
     }

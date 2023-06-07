@@ -29,38 +29,40 @@
         <table class="table table-striped">
             <thead class="thead-dark">
             <tr>
-                <th>Subject ID</th>
-                <th>Subject name</th>
-                <th>Amount of Credits</th>
-                <th>Subject Class</th>
+                <th>Student ID</th>
+                <th>Student Name</th>
+                <th>Gender</th>
+                <th>Birthday</th>
+                <th>Grade</th>
             </tr>
             </thead>
             <tbody>
-            <tr th:if="${subjects}" th:each="subject:${subjects}" th:id="${subject.subjectId}">
-                <td th:text="${subject.subjectId}"></td>
-                <td th:text="${subject.subjectName}"></td>
-                <td th:text="${subject.credits}"></td>
-                <td th:text="${subject.subjectClass}"></td>
+            <tr th:if="${students}" th:each="student:${students}" th:id="${student.studentId}">
+                <td th:text="${student.studentId}"></td>
+                <td th:text="${student.studentName}"></td>
+                <td th:text="${student.gender}"></td>
+                <td th:text="${student.birthday}"></td>
+                <td th:text="${student.grade}"></td>
             </tr>
             </tbody>
         </table>
     </div>
 </div>
 <div class="d-flex justify-content-between align-items-center">
-    <a class="btn btn-primary" th:href="@{/subject/search-subject(search-subject=${param.search},page=${subjects.number - 1})}"
-       th:if="${subjects.hasPrevious()}">
+    <a class="btn btn-primary" th:href="@{/student/search-student(search-student=${param.search},page=${students.number - 1})}"
+       th:if="${students.hasPrevious()}">
         Previous
     </a>
     <span class="mx-2">
-        Page <span th:text="${subjects.number + 1}"></span>/<span th:text="${subjects.totalPages}"></span>
+        Page <span th:text="${students.number + 1}"></span>/<span th:text="${students.totalPages}"></span>
     </span>
-    <a class="btn btn-primary" th:href="@{/subject/search-subject(search-subject=${param.search}, page=${subjects.number + 1})}"
-       th:if="${subjects.hasNext()}">
+    <a class="btn btn-primary" th:href="@{/student/search-student(search-student=${param.search}, page=${students.number + 1})}"
+       th:if="${students.hasNext()}">
         Next
     </a>
 </div>
 <div class="container text-center">
-    <a class="btn btn-default btn-lg" href="/subject/show-subject">Back to List</a>
+    <a class="btn btn-default btn-lg" href="/student/show">Back to List</a>
 </div>
 </body>
 </html>

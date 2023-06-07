@@ -31,8 +31,8 @@
 
                 // Populate modal fields with enrollment data.
                 $('#enrollmentId').val(enrollmentId);
-                $('#studentName').val(studentName);
-                $('#courseName').val(courseName);
+                $('#student').val(studentName);
+                $('#course').val(courseName);
                 $('#enrollmentDate').val(enrollmentDate);
             })
         });
@@ -41,8 +41,8 @@
             event.preventDefault();
             var enrollmentId = $('#enrollmentId').val();
             var enrollmentDate = $('#enrollmentDate').val();
-            var studentName = $('#studentName').val();
-            var courseName = $('#courseName').val();
+            var studentName = $('#student').val();
+            var courseName = $('#course').val();
             // Send the updated data via AJAX.
             $.ajax({
                 url: '/enrollment/edit-enrollment',
@@ -51,14 +51,12 @@
                     enrollmentId: enrollmentId,
                     enrollmentDate: enrollmentDate,
                     courseName: courseName,
-                    studentName,
-                    studentName
+                    studentName: studentName
                 },
                 success: function (data) {
                     // Update the displayed enrollment data without a page refresh.
                     var enrollmentRow = $('button[data-enrollment-id="' + enrollmentId + '"]').parents('tr');
                     enrollmentRow.find('td:eq(3)').text(enrollmentDate);
-
                     $('#editEnrollmentModal').modal('hide');
                 },
                 error: function (jqXHR, textStatus, errorThrown) {
@@ -92,7 +90,7 @@
     </div>
 </div>
 <!--MODAL-EDIT-->
-<div class="modal fade" id="editEnrollmentModal" tabindex="-1" aria-labelledby="editEnrollmentModalLabel"
+<div th:object="${enrollment}" class="modal fade" id="editEnrollmentModal" tabindex="-1" aria-labelledby="editEnrollmentModalLabel"
      aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -100,23 +98,31 @@
                 <h5 class="modal-title" id="editEnrollmentModalLabel">Edit Enrollment</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <form id="editEnrollmentForm" method="post">
+            <form id="editEnrollmentForm" method="post" >
                 <div class="modal-body">
                     <div class="mb-3">
                         <label for="enrollmentId" class="form-label">Enrollment ID:</label>
                         <input type="text" class="form-control" id="enrollmentId" name="enrollmentId" readonly>
                     </div>
                     <div class="mb-3">
-                        <label for="studentName" class="form-label">Student Name:</label>
-                        <input type="text" class="form-control" id="studentName" name="studentName">
+                        <label class="form-label" >Student</label>
+                        <select id ="student" class="form-select" aria-label="Default select example">
+                            <option value="">-- Select a Student --</option>
+                            <option th:each="student : ${students}" th:value="${student.studentId}"
+                                    th:text="${student.studentName}"></option>
+                        </select>
                     </div>
                     <div class="mb-3">
-                        <label for="courseName" class="form-label">Course Name:</label>
-                        <input type="text" class="form-control" id="courseName" name="courseName">
+                        <label class="form-label" >Course</label>
+                        <select id="course" class="form-select" aria-label="Default select example">
+                            <option value="">-- Select a Course --</option>
+                            <option th:each="course : ${courses}" th:value="${course.courseId}"
+                                    th:text="${course.courseName}"></option>
+                        </select>
                     </div>
                     <div class="mb-3">
                         <label for="enrollmentDate" class="form-label">Enrollment Date:</label>
-                        <input type="text" class="form-control" id="enrollmentDate" name="enrollmentDate">
+                        <input type="date" class="form-control" id="enrollmentDate" name="enrollmentDate">
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -163,8 +169,8 @@
                 <td th:text="${enrollment.enrollmentDate}"></td>
                 <td>
                     <button class="btn btn-warning" th:data-enrollment-id="${enrollment.enrollmentId}"
-                            th:data-student-name="${enrollment.student.studentName}"
-                            th:data-course-name="${enrollment.course.courseName}"
+                            th:data-student-name="${enrollment.student.studentId}"
+                            th:data-course-name="${enrollment.course.courseId}"
                             th:data-enrollment-date="${enrollment.enrollmentDate}"
                             data-bs-toggle="modal" data-bs-target="#editEnrollmentModal">EDIT
                     </button>

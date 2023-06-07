@@ -1,0 +1,62 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" lang="">
+<head>
+    <title>ADD NEW Student</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <!-- Bootstrap CSS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+            crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+          crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+<h1 class="mb-3">ADD NEW STUDENT</h1>
+<th:block th:if="${message}">
+    <p th:text="${message}"></p>
+</th:block>
+<div>
+    <form th:object="${student}" th:action="@{/student/create-student}" method="post">
+
+        <div class="mb-3">
+            <label for="studentName" class="form-label">Student name</label>
+            <input type="text" id="studentName" th:field="*{studentName}" class="form-control" aria-describedby
+                   placeholder="Enter Student Name">
+        </div>
+
+
+        <div class="mb-3">
+            <label for="gender" class="form-label">Gender</label>
+            <select id="gender" name="gender" th:field="*{gender}" class="form-select">
+                <option value="" selected disabled hidden>Choose gender</option>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+                <option value="undefined">Undefined</option>
+            </select>
+        </div>
+
+        <div class="mb-3">
+            <label for="birthday" class="form-label">Birthday</label>
+            <input type="date" id="birthday" th:field="*{birthday}" class="form-control" aria-describedby
+                   placeholder="Enter Birthday Name">
+        </div>
+
+        <div class="mb-3">
+            <label for="grade" class="form-label">Grade</label>
+            <input type="text" id="grade" th:field="*{grade}" class="form-control" aria-describedby
+                   placeholder="Enter Birthday Name">
+        </div>
+
+        <button type="submit" class="btn btn-primary mb-3">Create</button>
+    </form>
+
+    <div class="container text-center">
+        <a class="btn btn-default" href="/home">Back to Home page</a>
+    </div>
+</div>
+
+</body>
+</html>

@@ -22,8 +22,8 @@
         $(document).ready(function () {
             $('.btn-delete').click(function () {
                 $('#confirmDeleteModal').modal('show');
-                var subjectId = $(this).data('subject-id');
-                $('#confirmDeleteModal #deleteButton').attr('href', '/subject/delete-subject/' + subjectId);
+                var studentId = $(this).data('student-id');
+                $('#confirmDeleteModal #deleteButton').attr('href', '/student/delete-student/' + studentId);
             });
         });
     </script>
@@ -40,7 +40,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                Are you sure you want to delete this subject?
+                Are you sure you want to delete this student?
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
@@ -61,35 +61,37 @@
     <div class="container">
         <h1>Danh sách môn học</h1>
 
-        <form th:action="@{/subject/search-subject}" method="get">
+        <form th:action="@{/student/search-student}" method="get">
             Search by first name:
-            <input name="search-subject" type="text"/>
+            <input name="search-student" type="text"/>
             <input type="submit" value="Search"/>
         </form>
         <table class="table table-striped">
             <thead>
             <tr>
                 <th>Id</th>
-                <th>Subject Name</th>
-                <th>Credits</th>
-                <th>Class</th>
+                <th>Student Name</th>
+                <th>Gender</th>
+                <th>Birthday</th>
+                <th>Grade</th>
                 <th>Edit</th>
                 <th>Delete</th>
             </tr>
             </thead>
-            <tbody th:object="${subjects}">
-            <tr th:each="subject : ${subjects}">
-                <td th:text="${subject.subjectId}"></td>
-                <td th:text="${subject.subjectName}"></td>
-                <td th:text="${subject.credits}"></td>
-                <td th:text="${subject.subjectClass}"></td>
+            <tbody th:object="${students}">
+            <tr th:each="student : ${students}">
+                <td th:text="${student.studentId}"></td>
+                <td th:text="${student.studentName}"></td>
+                <td th:text="${student.gender}"></td>
+                <td th:text="${student.birthday}"></td>
+                <td th:text="${student.grade}"></td>
                 <td>
                     <button class="btn btn-warning">
-                        <a th:href="@{/subject/edit-subject/__${subject.subjectId}__}">Edit</a>
+                        <a th:href="@{/student/edit-student/__${student.studentId}__}">Edit</a>
                     </button>
                 </td>
                 <td>
-                    <button class="btn btn-danger btn-delete" th:data-subject-id="${subject.subjectId}">
+                    <button class="btn btn-danger btn-delete" th:data-student-id="${student.studentId}">
                         Delete
                     </button>
                 </td>
@@ -97,15 +99,15 @@
             </tbody>
         </table>
         <div class="d-flex justify-content-between align-items-center">
-            <a class="btn btn-primary" th:href="@{/subject/show-subject(page=${subjects.number - 1})}"
-               th:if="${subjects.hasPrevious()}">
+            <a class="btn btn-primary" th:href="@{/student/show-student(page=${students.number - 1})}"
+               th:if="${students.hasPrevious()}">
                 Previous
             </a>
             <span class="mx-2">
-        Page <span th:text="${subjects.number + 1}"></span>/<span th:text="${subjects.totalPages}"></span>
+        Page <span th:text="${students.number + 1}"></span>/<span th:text="${students.totalPages}"></span>
     </span>
-            <a class="btn btn-primary" th:href="@{/subject/show-subject(page=${subjects.number + 1})}"
-               th:if="${subjects.hasNext()}">
+            <a class="btn btn-primary" th:href="@{/student/show-student(page=${students.number + 1})}"
+               th:if="${students.hasNext()}">
                 Next
             </a>
         </div>
