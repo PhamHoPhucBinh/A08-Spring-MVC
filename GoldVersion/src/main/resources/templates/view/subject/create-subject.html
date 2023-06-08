@@ -24,20 +24,20 @@
         <div class="mb-3">
             <label for="subjectName" class="form-label">Subject name</label>
             <input type="text" id="subjectName" th:field="*{subjectName}" class="form-control" aria-describedby
-                   placeholder="Enter Subject Name">
+                   placeholder="Enter Subject Name" required>
         </div>
 
 
         <div class="mb-3">
             <label for="credits" class="form-label">Amount of credits</label>
             <input type="number" id="credits" th:field="*{credits}" class="form-control" aria-describedby
-                   placeholder="Enter credits">
+                   placeholder="Enter credits" required>
         </div>
 
         <div class="mb-3">
             <label for="subjectClass" class="form-label">Subject Class</label>
             <input type="text" id="subjectClass" th:field="*{subjectClass}" class="form-control" aria-describedby
-                   placeholder="Enter Subject Name">
+                   placeholder="Enter Subject Name" required>
         </div>
 
         <button type="submit" class="btn btn-primary mb-3">Create</button>

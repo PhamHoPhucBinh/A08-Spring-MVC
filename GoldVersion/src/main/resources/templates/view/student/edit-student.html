@@ -22,7 +22,7 @@
 </th:block>
 <div>
     <form th:object="${student}" th:action="@{/student/edit-student}" method="post">
-        <input th:type="hidden" name="id" th:field="*{studentId}">
+        <input th:type="hidden" name="id" th:field="*{studentId}" required>
 
         <div class="mb-3">
             <label for="studentName" class="form-label">Student name</label>
@@ -32,7 +32,7 @@
 
         <div class="mb-3">
             <label for="gender" class="form-label">Gender</label>
-            <select id="gender" name="gender" th:field="*{gender}" class="form-select">
+            <select id="gender" name="gender" th:field="*{gender}" class="form-select" required>
                 <option value="" selected disabled hidden>Choose gender</option>
                 <option value="male">Male</option>
                 <option value="female">Female</option>
@@ -43,7 +43,7 @@
         <div class="mb-3">
             <label for="birthday" class="form-label">Birthday</label>
             <input type="date" id="birthday" th:field="*{birthday}" class="form-control" aria-describedby
-                   placeholder="Enter Birthday Name">
+                   placeholder="Enter Birthday Name" required>
         </div>
 
         <div class="mb-3">

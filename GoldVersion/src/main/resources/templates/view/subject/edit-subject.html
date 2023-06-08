@@ -22,7 +22,7 @@
 </th:block>
 <div>
     <form th:object="${subject}" th:action="@{/subject/edit-subject}" method="post">
-        <input th:type="hidden" name="id" th:field="*{subjectId}">
+        <input th:type="hidden" name="id" th:field="*{subjectId}" required>
 
         <div class="mb-3">
             <label for="subjectName" class="form-label">Subject name</label>

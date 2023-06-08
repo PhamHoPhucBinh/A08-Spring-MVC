@@ -11,26 +11,24 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
             crossorigin="anonymous"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <link rel="stylesheet" href="/css/styles.css">
-    <style>
-        .modal-dialog {
-            margin-top: 200px;
-        }
-    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script>
         $(document).ready(function () {
             $('.btn-delete').click(function () {
                 $('#confirmDeleteModal').modal('show');
-                var studentId = $(this).data('student-id');
-                $('#confirmDeleteModal #deleteButton').attr('href', '/student/delete-student/' + studentId);
+                var scoreId = $(this).data('score-id');
+                $('#confirmDeleteModal #deleteButton').attr('href', '/score/delete-score/' + scoreId);
             });
         });
+
     </script>
 </head>
 
 <body style="font-size: 100%">
-<!--MODAL DELETE-->
+
+<!--MODAL - DETETE-->
+
 <div class="modal fade" id="confirmDeleteModal" tabindex="-1" aria-labelledby="confirmDeleteModalLabel"
      aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
@@ -40,7 +38,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                Are you sure you want to delete this student?
+                Are you sure you want to delete this Score?
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
@@ -49,6 +47,7 @@
         </div>
     </div>
 </div>
+
 <div class="row">
     <div class="col-lg-3"></div>
     <div class="col-lg-6">
@@ -59,39 +58,37 @@
 </div>
 <section>
     <div class="container">
-        <h1>STUDENT LIST</h1>
+        <h1>Score Table</h1>
 
-        <form th:action="@{/student/search-student}" method="get">
+        <form th:action="@{/score/search-score}" method="get">
             Search by first name:
-            <input name="search-student" type="text"/>
+            <input name="search-score" type="text"/>
             <input type="submit" value="Search"/>
         </form>
         <table class="table table-striped">
             <thead>
             <tr>
                 <th>Id</th>
-                <th>Student Name</th>
-                <th>Gender</th>
-                <th>Birthday</th>
-                <th>Grade</th>
+                <th>Tên HS</th>
+                <th>Tên Lớp</th>
+                <th>Score</th>
                 <th>Edit</th>
                 <th>Delete</th>
             </tr>
             </thead>
-            <tbody th:object="${students}">
-            <tr th:each="student : ${students}">
-                <td th:text="${student.studentId}"></td>
-                <td th:text="${student.studentName}"></td>
-                <td th:text="${student.gender}"></td>
-                <td th:text="${student.birthday}"></td>
-                <td th:text="${student.grade}"></td>
+            <tbody th:object="${scores}">
+            <tr th:each="score : ${scores}">
+                <td th:text="${score.id}"></td>
+                <td th:text="${score.student.studentName}"></td>
+                <td th:text="${score.subject.subjectName}"></td>
+                <td th:text="${score.score}"></td>
                 <td>
                     <button class="btn btn-warning">
-                        <a th:href="@{/student/edit-student/__${student.studentId}__}">Edit</a>
+                        <a th:href="@{/score/edit-score/__${score.id}__}">Edit</a>
                     </button>
                 </td>
                 <td>
-                    <button class="btn btn-danger btn-delete" th:data-student-id="${student.studentId}">
+                    <button class="btn btn-danger btn-delete" th:data-score-id="${score.id}">
                         Delete
                     </button>
                 </td>
@@ -99,22 +96,23 @@
             </tbody>
         </table>
         <div class="d-flex justify-content-between align-items-center">
-            <a class="btn btn-primary" th:href="@{/student/show-student(page=${students.number - 1})}"
-               th:if="${students.hasPrevious()}">
+            <a class="btn btn-primary" th:href="@{/score/show-score(page=${scores.number - 1})}"
+               th:if="${scores.hasPrevious()}">
                 Previous
             </a>
             <span class="mx-2">
-        Page <span th:text="${students.number + 1}"></span>/<span th:text="${students.totalPages}"></span>
+        Page <span th:text="${scores.number + 1}"></span>/<span th:text="${scores.totalPages}"></span>
     </span>
-            <a class="btn btn-primary" th:href="@{/student/show-student(page=${students.number + 1})}"
-               th:if="${students.hasNext()}">
+            <a class="btn btn-primary" th:href="@{/score/show-score(page=${scores.number + 1})}"
+               th:if="${scores.hasNext()}">
                 Next
             </a>
         </div>
+
     </div>
+
     <div class="container text-center">
         <a class="btn btn-default btn-lg" href="/home">Back to Home page</a>
-    </div>
     </div>
 </section>
 </body>

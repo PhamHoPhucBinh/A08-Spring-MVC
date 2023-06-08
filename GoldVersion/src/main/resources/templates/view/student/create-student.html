@@ -24,13 +24,13 @@
         <div class="mb-3">
             <label for="studentName" class="form-label">Student name</label>
             <input type="text" id="studentName" th:field="*{studentName}" class="form-control" aria-describedby
-                   placeholder="Enter Student Name">
+                   placeholder="Enter Student Name" required>
         </div>
 
 
         <div class="mb-3">
             <label for="gender" class="form-label">Gender</label>
-            <select id="gender" name="gender" th:field="*{gender}" class="form-select">
+            <select id="gender" name="gender" th:field="*{gender}" class="form-select" required>
                 <option value="" selected disabled hidden>Choose gender</option>
                 <option value="male">Male</option>
                 <option value="female">Female</option>
@@ -41,13 +41,13 @@
         <div class="mb-3">
             <label for="birthday" class="form-label">Birthday</label>
             <input type="date" id="birthday" th:field="*{birthday}" class="form-control" aria-describedby
-                   placeholder="Enter Birthday Name">
+                   placeholder="Enter Birthday Name" required>
         </div>
 
         <div class="mb-3">
             <label for="grade" class="form-label">Grade</label>
             <input type="text" id="grade" th:field="*{grade}" class="form-control" aria-describedby
-                   placeholder="Enter Birthday Name">
+                   placeholder="Enter Birthday Name" required>
         </div>
 
         <button type="submit" class="btn btn-primary mb-3">Create</button>
