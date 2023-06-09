@@ -40,4 +40,9 @@ public class ScoreServiceImpl implements ScoreService {
     public void deleteById(Integer id) {
         scoreRepository.deleteById(id);
     }
+
+    @Override
+    public Page<Score> searchScore(Pageable pageable, String searchContent) {
+        return scoreRepository.searchScoreByStudent_StudentNameOrSubject_SubjectName(searchContent,searchContent,pageable);
+    }
 }

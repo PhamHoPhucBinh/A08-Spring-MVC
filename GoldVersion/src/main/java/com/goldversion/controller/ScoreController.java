@@ -116,5 +116,16 @@ public class ScoreController {
         return "redirect:/score/show-score";
     }
 
+    @GetMapping(value = "/search-score")
+    public ModelAndView showListSearch(@PageableDefault(value = 3, sort = "id")
+                                       Pageable pageable, @RequestParam(value = "search-score", required = false) String searchContent) {
+        Page<Score> scores = scoreService.searchScore(pageable, searchContent);
+        ModelAndView modelAndView = new ModelAndView("view/score/show-score");
+        modelAndView.addObject("scores", scores);
+        if (scores.getContent().size() == 0) {
+            modelAndView.addObject("message", " There is no found result !");
+        }
+        return modelAndView;
+    }
 
 }

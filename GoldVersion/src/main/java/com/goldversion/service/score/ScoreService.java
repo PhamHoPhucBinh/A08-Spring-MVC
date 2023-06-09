@@ -16,4 +16,6 @@ public interface ScoreService {
     void save(Score score);
 
     void deleteById(Integer id);
+
+    Page<Score> searchScore(Pageable pageable,String searchContent);
 }

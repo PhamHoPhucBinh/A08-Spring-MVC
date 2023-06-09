@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org" lang="">
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html" lang="">
 <head>
     <title>ADD NEW Student</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
@@ -25,6 +25,8 @@
             <label for="studentName" class="form-label">Student name</label>
             <input type="text" id="studentName" th:field="*{studentName}" class="form-control" aria-describedby
                    placeholder="Enter Student Name" required>
+            </br>
+            <span class="alert alert-danger" th:if="${#fields.hasErrors('studentName')}" th:errors="*{studentName}">Name lenght min is 5</span>
         </div>
 
 
@@ -42,6 +44,8 @@
             <label for="birthday" class="form-label">Birthday</label>
             <input type="date" id="birthday" th:field="*{birthday}" class="form-control" aria-describedby
                    placeholder="Enter Birthday Name" required>
+            </br>
+            <span class="alert alert-danger" th:if="${#fields.hasErrors('birthday')}" th:errors="*{birthday}">Birthday must not in the future</span>
         </div>
 
         <div class="mb-3">

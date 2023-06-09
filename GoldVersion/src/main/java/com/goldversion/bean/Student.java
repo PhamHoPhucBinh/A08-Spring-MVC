@@ -1,6 +1,7 @@
 package com.goldversion.bean;
 
 import javax.persistence.*;
+import javax.validation.constraints.*;
 import java.sql.Date;
 
 @Entity
@@ -8,8 +9,12 @@ public class Student {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer studentId;
+    @NotBlank(message = "Student name cannot be blank")
+    @Size(min = 5, message = "Student name cannot be shorter than 5 characters")
     private String studentName;
     private String gender;
+    @NotNull(message = "Birthday cannot be null")
+    @Past(message = "Birthday cannot be in the future")
     private Date birthday;
     private String grade;
 

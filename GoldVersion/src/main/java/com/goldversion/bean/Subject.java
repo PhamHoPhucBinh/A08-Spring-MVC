@@ -1,12 +1,16 @@
 package com.goldversion.bean;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 
 @Entity
 public class Subject {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer subjectId;
+    @NotBlank(message = "Subject name cannot be blank")
+    @Size(min = 5, message = "Subject name cannot be shorter than 5 characters")
     private String subjectName;
     private Integer credits;
     private String subjectClass;

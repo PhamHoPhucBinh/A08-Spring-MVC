@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import javax.validation.Valid;
 import java.util.Optional;
 
 @Controller
@@ -46,7 +47,10 @@ public class StudentController {
     }
 
     @PostMapping("/create-student")
-    public ModelAndView saveStudent(@ModelAttribute("student") Student student) {
+    public ModelAndView saveStudent(@Valid @ModelAttribute("student") Student student, BindingResult bindingResult) {
+        if (bindingResult.hasErrors()){
+            return new ModelAndView("view/student/create-student");
+        }
         studentService.save(student);
         ModelAndView modelAndView = new ModelAndView("view/student/create-student");
         modelAndView.addObject("student", new Student());
