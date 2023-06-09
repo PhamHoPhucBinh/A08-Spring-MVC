@@ -38,21 +38,24 @@
         });
         // Form submission handler via AJAX.
         $('#editEnrollmentForm').submit(function (event) {
+            alert("aa")
             event.preventDefault();
             var enrollmentId = $('#enrollmentId').val();
             var enrollmentDate = $('#enrollmentDate').val();
             var studentName = $('#student').val();
             var courseName = $('#course').val();
+
+            const  tmp ={
+                enrollmentId: enrollmentId,
+                enrollmentDate: enrollmentDate,
+                courseName: courseName,
+                studentName: studentName
+            };
             // Send the updated data via AJAX.
             $.ajax({
                 url: '/enrollment/edit-enrollment',
                 type: 'POST',
-                data: {
-                    enrollmentId: enrollmentId,
-                    enrollmentDate: enrollmentDate,
-                    courseName: courseName,
-                    studentName: studentName
-                },
+                data: JSON.stringify(tmp),
                 success: function (data) {
                     // Update the displayed enrollment data without a page refresh.
                     var enrollmentRow = $('button[data-enrollment-id="' + enrollmentId + '"]').parents('tr');

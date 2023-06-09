@@ -22,6 +22,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
 import java.sql.Date;
+import java.util.Map;
 
 @Controller
 @RequestMapping(value = "/enrollment")
@@ -86,12 +87,13 @@ public class EnrollmentController {
     }
 
     @PostMapping("/edit-enrollment")
-    public ResponseEntity<Void> updateEnrollment(@RequestParam Integer enrollmentId,
-                                                 @RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") Date enrollmentDate) {
-        Enrollment enrollment = enrollmentService.findById(enrollmentId);
-        enrollment.setEnrollmentDate(enrollmentDate);
+    public ResponseEntity<Void> updateEnrollment(String maps) {
+        System.out.println(maps);
 
-        enrollmentService.save(enrollment);
+//        Enrollment enrollment = enrollmentService.findById(enrollmentId);
+//        enrollment.setEnrollmentDate(enrollmentDate);
+//
+//        enrollmentService.save(enrollment);
         return ResponseEntity.ok().build();
     }
 
