@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Question List</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+          crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+            crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="/css/styles.css">
+    <style>
+        .modal-dialog {
+            margin-top: 200px;
+        }
+    </style>
+    <script>
+        $(document).ready(function () {
+            $('.btn-delete').click(function () {
+                $('#confirmDeleteModal').modal('show');
+                var questionId = $(this).data('question-id');
+                $('#confirmDeleteModal #deleteButton').attr('href', '/question/delete-question/' + questionId);
+            });
+        });
+    </script>
+</head>
+
+<body style="font-size: 100%">
+<!--MODAL DELETE-->
+<div class="modal fade" id="confirmDeleteModal" tabindex="-1" aria-labelledby="confirmDeleteModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="confirmDeleteModalLabel">Confirmation</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                Are you sure you want to delete this question?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <a id="deleteButton" class="btn btn-danger">Delete</a>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-3"></div>
+    <div class="col-lg-6">
+        <div th:if="${message}" class="alert alert-primary" role="alert" th:text="${message}">
+        </div>
+    </div>
+    <div class="col-lg-3"></div>
+</div>
+<section>
+    <div class="container">
+        <h1>QUESTION LIST</h1>
+
+        <form th:action="@{/question/search-question}" method="get">
+            Search by title:
+            <input name="search-question" type="text"/>
+            <input type="submit" value="Search"/>
+        </form>
+
+        <form th:action="@{/question/search-type}" method="get">
+            Search by Question Type:
+            <select name="search-type">
+                <option value="">--All--</option>
+                <option th:each="questionType : ${questionTypes}" th:value="${questionType.typeName}">
+                    <span th:text="${questionType.typeName}"></span>
+                </option>
+            </select>
+            <input type="submit" value="Search"/>
+        </form>
+
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>Id</th>
+                <th>Title</th>
+                <th>Content</th>
+                <th>Answer</th>
+                <th>Question Type</th>
+                <th>Date Create</th>
+                <th>Status</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </tr>
+            </thead>
+            <tbody th:object="${questions}">
+            <tr th:each="question : ${questions}">
+                <td th:text="${question.questionId}"></td>
+                <td th:text="${question.title}"></td>
+                <td th:text="${question.content}"></td>
+                <td th:text="${question.answer}"></td>
+                <td th:text="${question.questionType.typeName}"></td>
+                <td th:text="${question.dateCreate}"></td>
+                <td th:text="${question.status}"></td>
+                <td>
+                    <button class="btn btn-warning">
+                        <a th:href="@{/question/edit-question/__${question.questionId}__}">Edit</a>
+                    </button>
+                </td>
+                <td>
+                    <button class="btn btn-danger btn-delete" th:data-question-id="${question.questionId}">
+                        Delete
+                    </button>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <div class="d-flex justify-content-between align-items-center">
+            <a class="btn btn-primary" th:href="@{/question/show-question(page=${questions.number - 1})}"
+               th:if="${questions.hasPrevious()}">
+                Previous
+            </a>
+            <span class="mx-2">
+        Page <span th:text="${questions.number + 1}"></span>/<span th:text="${questions.totalPages}"></span>
+    </span>
+            <a class="btn btn-primary" th:href="@{/question/show-question(page=${questions.number + 1})}"
+               th:if="${questions.hasNext()}">
+                Next
+            </a>
+        </div>
+    </div>
+    <div class="container text-center">
+        <a class="btn btn-default btn-lg" href="/home">Back to Home page</a>
+    </div>
+    </div>
+</section>
+</body>
+
+</html>

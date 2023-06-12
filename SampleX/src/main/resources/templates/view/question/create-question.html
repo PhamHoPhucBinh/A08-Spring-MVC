@@ -1,0 +1,59 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html" lang="">
+<head>
+    <title>ADD NEW Question</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <!-- Bootstrap CSS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+            crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+          crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+<h1 class="mb-3">ADD NEW QUESTION</h1>
+<th:block th:if="${message}">
+    <p th:text="${message}"></p>
+</th:block>
+<div>
+    <form th:object="${question}" th:action="@{/question/create-question}" method="post">
+        <div class="mb-3">
+            <label for="title" class="form-label">Question Title</label>
+            <input type="text" id="title" th:field="*{title}" class="form-control" aria-describedby
+                   placeholder="Enter Question Title" >
+            </br>
+            <span class="alert alert-danger" th:if="${#fields.hasErrors('title')}" th:errors="*{title}">Name lenght min is 5 and max is 100</span>
+        </div>
+
+        <div class="mb-3">
+            <label for="content" class="form-label">Content</label>
+            <input type="text" id="content" th:field="*{content}" class="form-control" aria-describedby
+                   placeholder="Enter Content">
+            </br>
+            <span class="alert alert-danger" th:if="${#fields.hasErrors('content')}" th:errors="*{content}"></span>
+        </div>
+
+        <div class="mb-3">
+            <label  class="form-label" >Question Type</label>
+            <select th:field="*{questionType}" class="form-select" aria-label="Default select example">
+                <option value="">-- Select a Type --</option>
+                <option th:each="questionType : ${questionTypes}" th:value="${questionType.typeId}"
+                        th:text="${questionType.typeName}"></option>
+            </select>
+            </br>
+            <span class="alert alert-danger" th:if="${#fields.hasErrors('questionType')}" th:errors="*{questionType}"></span>
+        </div>
+
+        <button type="submit" class="btn btn-primary mb-3">Create</button>
+    </form>
+
+    <div class="container text-center">
+        <a class="btn btn-default" href="/home">Back to Home page</a>
+    </div>
+</div>
+
+</body>
+</html>
